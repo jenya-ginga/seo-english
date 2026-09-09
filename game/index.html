@@ -39,6 +39,7 @@
       <div class="field">
         <label class="flabel">Игроки (5–10 человек)</label>
         <textarea id="sprintPlayers" placeholder="Аня, Борис, Вика, Гоша, Дима..."></textarea>
+        <div class="teams-preview" id="sprintTeamsPreview"></div>
       </div>
 
       <h3>2. Темы</h3>
@@ -141,6 +142,12 @@
   font-family:var(--sans); font-size:15px; background:var(--bg); color:var(--ink); resize:vertical;
 }
 #sprint textarea{min-height:70px;}
+.teams-preview{display:none; gap:10px; margin-top:12px;}
+.teams-preview.on{display:flex;}
+.teams-preview .tp-team{flex:1; background:var(--bg); border:1px dashed var(--line); border-radius:var(--radius-sm); padding:12px 14px;}
+.teams-preview .tp-name{font-family:var(--mono); font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--accent-ink); margin-bottom:6px;}
+.teams-preview .tp-players{font-size:14px; color:var(--ink-soft); line-height:1.6;}
+.teams-preview .tp-players span{display:block;}
 #sprint .chiprow{display:flex; flex-wrap:wrap; gap:8px;}
 #sprint .chiprow button{
   border:1px solid var(--line); background:var(--paper); color:var(--ink-soft);
@@ -179,6 +186,8 @@
 .gp-team .gp-name{font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em;}
 .gp-team .gp-score{font-family:var(--serif); font-size:34px; font-weight:650; color:var(--ink); line-height:1.1; margin-top:2px;}
 .gp-team .gp-turn{font-size:12px; color:var(--accent); margin-top:4px; font-weight:600; min-height:16px;}
+.gp-team .gp-roster{font-size:11.5px; color:var(--ink-faint); margin-top:8px; line-height:1.5; border-top:1px dashed var(--line); padding-top:8px;}
+.gp-team .gp-roster .cur{color:var(--accent-ink); font-weight:700;}
 
 .gp-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:36px 30px; text-align:center; position:relative; overflow:hidden;}
 .gp-card .gp-kind{font-family:var(--mono); font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:14px;}
@@ -229,6 +238,7 @@ const SPRINT_DATA = {"lessons": [{"num": 1, "title": "Просто о време
     game: document.getElementById('sprintGame'),
     end: document.getElementById('sprintEnd'),
     players: document.getElementById('sprintPlayers'),
+    teamsPreview: document.getElementById('sprintTeamsPreview'),
     lessonChips: document.getElementById('sprintLessonChips'),
     selAll: document.getElementById('sprintSelAll'),
     selNone: document.getElementById('sprintSelNone'),
@@ -327,15 +337,24 @@ const SPRINT_DATA = {"lessons": [{"num": 1, "title": "Просто о време
   let activeTeam = 0;
   let turnCounters = []; // per-team index into players[] for whose turn it is
 
+  const TEAM_NAMES = ['Команда А', 'Команда Б'];
+
+  function splitIntoTeams(raw) {
+    // Snake-alternating assignment (А, Б, А, Б, ...) so both rosters stay
+    // as even as possible and it's clear at a glance who plays for whom.
+    const rosters = [[], []];
+    raw.forEach((name, i) => rosters[i % 2].push(name));
+    return rosters;
+  }
+
+  function parsePlayerNames() {
+    return els.players.value.split(/[,\n]/).map(s => s.trim()).filter(Boolean);
+  }
+
   function buildTeams() {
-    const raw = els.players.value.split(/[,\n]/).map(s => s.trim()).filter(Boolean);
-    teams = [
-      { name: 'Команда А', score: 0, players: [] },
-      { name: 'Команда Б', score: 0, players: [] },
-    ];
-    raw.forEach((name, i) => teams[i % 2].players.push(name));
-    if (teams[0].players.length === 0) teams[0].players.push('Игрок');
-    if (teams[1].players.length === 0) teams[1].players.push('Игрок');
+    const raw = parsePlayerNames();
+    const rosters = splitIntoTeams(raw);
+    teams = TEAM_NAMES.map((name, i) => ({ name, score: 0, players: rosters[i].length ? rosters[i] : ['Игрок'] }));
     turnCounters = [0, 0];
   }
 
@@ -344,15 +363,38 @@ const SPRINT_DATA = {"lessons": [{"num": 1, "title": "Просто о време
     return t.players[turnCounters[teamIdx] % t.players.length];
   }
 
+  function renderTeamsPreview() {
+    const raw = parsePlayerNames();
+    if (raw.length === 0) {
+      els.teamsPreview.classList.remove('on');
+      els.teamsPreview.innerHTML = '';
+      return;
+    }
+    const rosters = splitIntoTeams(raw);
+    els.teamsPreview.classList.add('on');
+    els.teamsPreview.innerHTML = TEAM_NAMES.map((name, i) => `
+      <div class="tp-team">
+        <div class="tp-name">${name}</div>
+        <div class="tp-players">${(rosters[i].length ? rosters[i] : ['—']).map(n => `<span>${n}</span>`).join('')}</div>
+      </div>`).join('');
+  }
+  els.players.addEventListener('input', renderTeamsPreview);
+  renderTeamsPreview();
+
   function renderScoreboard() {
     els.scoreboard.innerHTML = '';
     teams.forEach((t, i) => {
       const div = document.createElement('div');
       div.className = 'gp-team' + (i === activeTeam ? ' active' : '');
+      const roster = t.players.map((n, pi) => {
+        const isCurrent = i === activeTeam && pi === (turnCounters[i] % t.players.length);
+        return isCurrent ? `<span class="cur">${n}</span>` : n;
+      }).join(', ');
       div.innerHTML = `
         <div class="gp-name">${t.name}</div>
         <div class="gp-score">${t.score}</div>
-        <div class="gp-turn">${i === activeTeam ? '▶ ход: ' + currentPlayerName(i) : ''}</div>`;
+        <div class="gp-turn">${i === activeTeam ? '▶ ход: ' + currentPlayerName(i) : ''}</div>
+        <div class="gp-roster">${roster}</div>`;
       els.scoreboard.appendChild(div);
     });
   }
