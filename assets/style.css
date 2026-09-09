@@ -219,6 +219,11 @@ a.lesson-card:hover{transform:translateY(-2px); box-shadow:0 4px 10px rgba(28,32
 @media (max-width:820px){.sections-grid{grid-template-columns:repeat(2, 1fr);}}
 @media (max-width:560px){.sections-grid{grid-template-columns:1fr;}}
 .stub-card{ background:transparent; border:1px dashed var(--line); border-radius:var(--radius); padding:22px 20px; color:var(--ink-faint); }
+.stub-card.live{ display:block; text-decoration:none; border:1px solid var(--accent); background:var(--accent-soft); color:var(--ink); transition:transform .15s ease, box-shadow .15s ease; }
+.stub-card.live:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+.stub-card.live .stub-title{ color:var(--accent-ink); display:flex; align-items:center; gap:8px; }
+.stub-card.live .stub-desc{ color:var(--ink-soft); }
+.stub-ready{ font-family:var(--mono); font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; background:var(--accent); color:#fff; padding:2px 7px; border-radius:20px; }
 .stub-card .stub-title{ font-family:var(--serif); font-weight:620; font-size:16px; color:var(--ink-soft); margin-bottom:6px; }
 .stub-card .stub-desc{font-size:13.5px; line-height:1.5;}
 

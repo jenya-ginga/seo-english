@@ -77,10 +77,10 @@ html = f'''<!DOCTYPE html>
         <div class="stub-title">Разговорник по фразам</div>
         <div class="stub-desc">Сводная шпаргалка фраз-спасателей из всех уроков.</div>
       </div>
-      <div class="stub-card">
-        <div class="stub-title">Тренажёр</div>
-        <div class="stub-desc">Быстрые упражнения на времена и лексику для повторения.</div>
-      </div>
+      <a class="stub-card live" href="/game/">
+        <div class="stub-title">Спринт-тренажёр <span class="stub-ready">Готово</span></div>
+        <div class="stub-desc">Командная игра на скорость: карточки на перевод и реакцию на реплики клиента по всем 15 урокам, таймер, счёт.</div>
+      </a>
     </div>
     <div class="note">Есть идея, что должно быть в доп. разделах? Пишите — добавим.</div>
   </div>
