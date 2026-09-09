@@ -63,6 +63,8 @@ def extract_phrase_cards(html, lesson_title, lesson_num, seen):
             continue
         if len(en) > 90 or len(ru) > 120:
             continue
+        if '___' in en or '___' in ru or '\xa0' in en or '\xa0' in ru:
+            continue
         if not mostly_cyrillic(ru, 0.4):
             # Some "en" cells embed the Russian gloss in parentheses instead
             # of a separate ru column, e.g. "Actually (на самом деле)" +
@@ -111,26 +113,167 @@ def extract_tables(html, lesson_title, lesson_num, seen):
     return out
 
 
+def extract_and_mask_tagged_client_lines(html, lesson_title, lesson_num, seen):
+    """
+    Two more lesson layouts quote a client line right next to a
+    "<span class=\"tag-role\">" difficulty/speaker tag, mixed in among
+    otherwise-legitimate specialist phrase-card content:
+
+      - lesson 5: each <li> is <span class="tag-role">простой|каверзный</span>
+        + <span class="en">"..."</span><span class="ru">...</span>, where the
+        en/ru pair is the CLIENT's quoted line + its translation, not a
+        specialist phrase to translate.
+      - lesson 12 (and similar): <span class="tag-role">Client</span>
+        immediately followed by <blockquote class="script">"..."</blockquote>
+        — the blockquote is the client's line; a separate "Hint" en/ru pair
+        that comes after it in the same xcard is legitimate specialist
+        guidance and is left alone.
+
+    Both patterns are masked out of the html this returns so the generic
+    phrase-card/table extractors that run afterwards can't re-capture the
+    same lines as "term" (specialist-says) content.
+    """
+    out = []
+
+    def add_client(text):
+        text = strip_tags(text).strip().strip('"“”‘’\'').strip()
+        if not text or not mostly_latin(text, 0.75):
+            return
+        if len(text) < 15 or len(text) > 220:
+            return
+        key = (lesson_num, 'q:' + text.lower())
+        if key in seen:
+            return
+        seen.add(key)
+        out.append({"type": "client", "lesson": lesson_num, "lessonTitle": lesson_title, "en": text})
+
+    # <li> items tagged with a role: some lessons (5) tag every line with a
+    # difficulty ("простой"/"каверзный") and every one of those IS a client
+    # line; others (15) tag lines with the actual speaker ("клиент" vs
+    # "специалист") in the same dialogue — only the "клиент" ones should be
+    # masked out as client content, "специалист" lines are legitimate
+    # translate-practice material and must be left alone so the normal
+    # phrase-card extractor still picks them up.
+    CLIENT_ROLE_LABELS = {'клиент', 'client', 'простой', 'каверзный', 'сложный', 'средний'}
+    SPECIALIST_ROLE_LABELS = {'специалист', 'specialist'}
+
+    def li_repl(m):
+        li_body = m.group(1)
+        tr_m = re.search(r'<span class="tag-role">(.*?)</span>', li_body, re.S)
+        if not tr_m:
+            return m.group(0)
+        role = strip_tags(tr_m.group(1)).strip().lower()
+        if role in SPECIALIST_ROLE_LABELS:
+            return m.group(0)  # leave untouched — normal term extraction applies
+        if role in CLIENT_ROLE_LABELS:
+            en_m = re.search(r'<span class="en">(.*?)</span>', li_body, re.S)
+            if en_m:
+                add_client(en_m.group(1))
+            return ''  # mask — its en/ru pair must not become a "term"
+        return m.group(0)  # unrecognised role label — safest to leave as-is
+
+    html = re.sub(r'<li>(.*?)</li>', li_repl, html, flags=re.S)
+
+    # tag-role="Client" immediately followed by a quoted <blockquote class="script">
+    def bq_repl(m):
+        add_client(m.group('bq'))
+        return ''  # mask just the tag+blockquote; any following Hint stays intact
+
+    html = re.sub(
+        r'<span class="tag-role">Client</span>\s*<blockquote class="script">(?P<bq>.*?)</blockquote>',
+        bq_repl, html, flags=re.S,
+    )
+
+    return out, html
+
+
+CLIENT_QUESTION_CATEGORY_RE = re.compile(r'\d+\s*вопрос', re.I)
+
+
+def extract_and_mask_client_question_categories(html, lesson_title, lesson_num, seen):
+    """
+    Some lessons (lesson 3) have accordion sections that are purely a
+    categorised bank of CLIENT questions — the xcard-sub literally says
+    "N вопросов" ("N questions"), e.g. "A · О результатах и сроках / 7
+    вопросов". Inside those, every <span class="en">/<span class="ru">
+    pair is a client line (quoted), NOT a specialist phrase to translate.
+
+    This must run BEFORE extract_phrase_cards, and on its output html:
+    it both (a) returns the client questions found, tagged "client", and
+    (b) masks those xcard bodies out of the html it returns, so the
+    generic phrase-card extractor never re-captures the same lines as
+    "term" (specialist-says) content.
+    """
+    out = []
+
+    def repl(m):
+        sub = m.group('sub')
+        body = m.group('body')
+        if not CLIENT_QUESTION_CATEGORY_RE.search(sub):
+            return m.group(0)
+        for sp in re.findall(r'<span class="en">(.*?)</span>', body, re.S):
+            text = strip_tags(sp).strip().strip('"“”‘’\'').strip()
+            if not text or not mostly_latin(text, 0.75):
+                continue
+            if len(text) < 15 or len(text) > 220:
+                continue
+            key = (lesson_num, 'q:' + text.lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({"type": "client", "lesson": lesson_num, "lessonTitle": lesson_title, "en": text})
+        return ''  # mask this xcard body out entirely
+
+    pattern = re.compile(
+        r'<span class="xcard-title">.*?</span><span class="xcard-sub">(?P<sub>.*?)</span>.*?'
+        r'<div class="xcard-body">(?P<body>.*?)</div>\s*</details>',
+        re.S,
+    )
+    masked_html = pattern.sub(repl, html)
+    return out, masked_html
+
+
 def extract_client_questions(html, lesson_title, lesson_num, seen):
+    """
+    Only pulls lines that are genuinely something a CLIENT would say to the
+    specialist (a question, an objection, a challenge) — never the
+    specialist's own first-person report/rescue-phrase lines. Two lessons
+    (2 and 3) use the same <li> markup for the specialist's OWN monologue
+    ("First, I fixed...", "I hear you. Let me share some context…") — that
+    is reading practice, not something to react to, so it is excluded here
+    even though it technically matches the <li> pattern.
+    """
     out = []
     for xcard in re.findall(r'<div class="xcard-body">(.*?)</div>\s*</details>', html, re.S):
-        candidates = []
+        candidates = []  # (text, must_be_question)
         li_items = re.findall(r'<li>(.*?)</li>', xcard, re.S)
-        for li in li_items:
-            candidates.append(strip_tags(li))
-        # "client says" chips: take the LAST chips block in each xcard body when
-        # there are two (specialist chips, then client chips) — client-facing
-        # lines are what a specialist must react to out loud. Only used when
-        # there were no <li> follow-up questions in this card (role-play
-        # lessons use chips instead of <li> for their dialogue lines).
-        if not li_items:
+        if li_items:
+            # <li> follow-up lines are only trustworthy as client-voiced
+            # prompts when they are actual questions (this is how lesson 10's
+            # case follow-ups are written). Lessons 2/3 use the same markup
+            # for the specialist's own monologue/rescue phrases, which never
+            # reliably end in "?" — requiring "?" filters those out too.
+            for li in li_items:
+                candidates.append((strip_tags(li), True))
+        else:
+            # "client says" chips: take the LAST chips block in each xcard
+            # body, but ONLY when there are at least two chip blocks
+            # (specialist phrases, then client phrases) — that pairing is
+            # how the role-play lessons (7/8) lay out their dialogue lines,
+            # and don't always phrase them as questions ("Our competitor is
+            # killing it and they just launched"), so these don't require a
+            # "?". A single chips block (as in some lesson 3 cards) is the
+            # SPECIALIST's own rescue-phrase starters, not a client line —
+            # skip those rather than risk mislabeling them.
             chip_blocks = re.findall(r'<div class="chips">(.*?)</div>', xcard, re.S)
-            if chip_blocks:
+            if len(chip_blocks) >= 2:
                 last_block = chip_blocks[-1]
                 for sp in re.findall(r'<span>(.*?)</span>', last_block, re.S):
-                    candidates.append(strip_tags(sp))
-        for raw in candidates:
+                    candidates.append((strip_tags(sp), False))
+        for raw, must_be_question in candidates:
             text = raw.strip().strip('"“”‘’\'').strip()
+            if must_be_question and not text.endswith('?'):
+                continue
             if not mostly_latin(text, 0.75):
                 continue
             if len(text) < 25 or len(text) > 220:
@@ -172,9 +315,11 @@ def main():
             html = f.read()
         title = lesson_title_of(html, f"Урок {n}")
         seen = set()
+        client_from_categories, html = extract_and_mask_client_question_categories(html, title, n, seen)
+        client_from_tags, html = extract_and_mask_tagged_client_lines(html, title, n, seen)
         terms = extract_phrase_cards(html, title, n, seen)
         terms += extract_tables(html, title, n, seen)
-        clients = extract_client_questions(html, title, n, seen)
+        clients = client_from_categories + client_from_tags + extract_client_questions(html, title, n, seen)
         all_terms.extend(terms)
         all_clients.extend(clients)
         lessons_meta.append({"num": n, "title": title, "termCount": len(terms), "clientCount": len(clients)})

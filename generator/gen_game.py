@@ -157,10 +157,19 @@ BODY = f'''<section id="sprint">
 
       <h3>4. Время на карточку</h3>
       <div class="field">
+        <label class="flabel">Перевод (короткая фраза)</label>
         <div class="timebtns" id="sprintTimeButtons">
           <button type="button" class="timebtn" data-t="8">8 сек</button>
           <button type="button" class="timebtn" data-t="12">12 сек</button>
           <button type="button" class="timebtn" data-t="20">20 сек</button>
+        </div>
+      </div>
+      <div class="field">
+        <label class="flabel">Реакция на клиента (целое предложение)</label>
+        <div class="timebtns" id="sprintSpeakTimeButtons">
+          <button type="button" class="timebtn" data-t="20">20 сек</button>
+          <button type="button" class="timebtn" data-t="30">30 сек</button>
+          <button type="button" class="timebtn" data-t="40">40 сек</button>
         </div>
       </div>
 
@@ -224,6 +233,7 @@ const SPRINT_DATA = {DATA_JSON};
     selNone: document.getElementById('sprintSelNone'),
     modeButtons: document.getElementById('sprintModeButtons'),
     timeButtons: document.getElementById('sprintTimeButtons'),
+    speakTimeButtons: document.getElementById('sprintSpeakTimeButtons'),
     start: document.getElementById('sprintStart'),
     warn: document.getElementById('sprintWarn'),
     scoreboard: document.getElementById('sprintScoreboard'),
@@ -246,7 +256,8 @@ const SPRINT_DATA = {DATA_JSON};
 
   let selectedLessons = new Set(SPRINT_DATA.lessons.map(l => l.num));
   let mode = 'both';
-  let seconds = 12;
+  let termSeconds = 12;
+  let speakSeconds = 40;
 
   // --- build lesson chips ---
   SPRINT_DATA.lessons.forEach(l => {{
@@ -282,10 +293,17 @@ const SPRINT_DATA = {DATA_JSON};
     }});
   }});
   els.timeButtons.querySelectorAll('.timebtn').forEach(b => {{
-    if (Number(b.dataset.t) === seconds) b.classList.add('on');
+    if (Number(b.dataset.t) === termSeconds) b.classList.add('on');
     b.addEventListener('click', () => {{
-      seconds = Number(b.dataset.t);
+      termSeconds = Number(b.dataset.t);
       els.timeButtons.querySelectorAll('.timebtn').forEach(x => x.classList.toggle('on', x === b));
+    }});
+  }});
+  els.speakTimeButtons.querySelectorAll('.timebtn').forEach(b => {{
+    if (Number(b.dataset.t) === speakSeconds) b.classList.add('on');
+    b.addEventListener('click', () => {{
+      speakSeconds = Number(b.dataset.t);
+      els.speakTimeButtons.querySelectorAll('.timebtn').forEach(x => x.classList.toggle('on', x === b));
     }});
   }});
 
@@ -388,11 +406,17 @@ const SPRINT_DATA = {DATA_JSON};
   // --- timer ---
   let timerId = null;
   let timeLeft = 0;
+  let currentDuration = 12;
   let paused = false;
+
+  function durationFor(card) {{
+    return card.type === 'term' ? termSeconds : speakSeconds;
+  }}
 
   function startTimer() {{
     clearInterval(timerId);
-    timeLeft = seconds * 10; // deciseconds for smoother bar
+    currentDuration = durationFor(current);
+    timeLeft = currentDuration * 10; // deciseconds for smoother bar
     paused = false;
     els.pause.textContent = '⏸ Пауза';
     updateTimerUI();
@@ -408,7 +432,7 @@ const SPRINT_DATA = {DATA_JSON};
   }}
 
   function updateTimerUI() {{
-    const pct = Math.max(0, (timeLeft / (seconds * 10)) * 100);
+    const pct = Math.max(0, (timeLeft / (currentDuration * 10)) * 100);
     els.fill.style.width = pct + '%';
     els.fill.classList.toggle('low', pct < 30);
     els.timenum.textContent = Math.ceil(timeLeft / 10);
