@@ -16,16 +16,19 @@
 /lessons/7/index.html    — Урок 7: Role Play — Real Client Scenarios
 /lessons/8/index.html    — Урок 8: Role Play — Reverse Roles
 /lessons/9/index.html    — Урок 9: Все фразовые глаголы в контексте SEO
-/lessons/10/index.html   — Урок 10: Кейсы с нейтивом (9 из 10 — десятый в
-                            исходнике был обрезан, дошлите текст и добавим)
+/lessons/10/index.html   — Урок 10: Кейсы с нейтивом
+/lessons/11/index.html   — Урок 11: Словарик (связки для живой речи + термины 2026)
+/lessons/12/index.html   — Урок 12: Semantic SEO + GEO практика
+/lessons/13/index.html   — Урок 13: Rendering & Page Speed + Technical SEO
+/lessons/14/index.html   — Урок 14: Допродажа во время звонка
+/lessons/15/index.html   — Урок 15: Сателлиты в SEO и их влияние на LLM
 /assets/style.css        — общая дизайн-система (шрифты, цвета, компоненты)
 /vercel.json             — чистые URL (без .html, с завершающим /)
 /generator/               — необязательно: Python-скрипты, которыми эти
                             страницы были сгенерированы (см. ниже)
 ```
 
-Уроки 11–15 на главной — заглушки со статусом «Скоро» (данных по ним не
-было в исходном документе).
+Все 15 уроков открыты на главной.
 
 ## Как редактировать контент
 

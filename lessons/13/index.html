@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 13 — Rendering & Page Speed + Technical SEO</title>
+<meta name="description" content="Core Web Vitals, rendering, robots.txt vs Basic Auth, редиректы и миграции — словарь и практика для разговоров с разработчиком и клиентом на технические темы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,620;9..144,680&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a href="/" class="brand"><span class="dot"></span>Global English · Урок 13</a>
+    <div class="navlinks">
+      <a class="navlink" href="#warmup">Warm-Up</a>
+      <a class="navlink" href="#terms-cwv">CWV словарь</a>
+      <a class="navlink" href="#terms-technical">Technical SEO</a>
+      <a class="navlink" href="#explain">Как объяснить</a>
+      <a class="navlink" href="#dialogue">Диалог</a>
+      <a class="navlink" href="#questions">Вопросы клиента</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Урок 13 из курса «Global English для SEO»</div>
+    <h1>Rendering & Page Speed + Technical SEO</h1>
+    <p class="lede">Core Web Vitals, критический путь рендеринга, robots.txt против Basic Auth и правильная последовательность миграции — как объяснять это разработчику и клиенту на английском, без путаницы в терминах.</p>
+    
+  </div>
+</header>
+
+<section id="warmup">
+  <div class="wrap">
+    <h2>Part 1 · Warm-Up</h2>
+    <p class="section-kicker">разминка — 5 минут</p>
+    
+<div class="info-card">
+  <div class="info-head"><h3>Diagnostic questions<small>отвечайте быстро — без подготовки</small></h3><span class="chip">⏱ 5 минут</span></div>
+  <p class="idea">Не переживайте, если не можете ответить — к концу урока вы будете знать все ответы.</p>
+</div>
+<div class="phrase-grid"><div class="phrase-card"><h4>Отвечайте вслух</h4><ul class="phrase-list"><li><span class="en">What tool do you use to check page speed?</span><span class="ru">— Каким инструментом вы проверяете скорость страницы?</span></li><li><span class="en">What does LCP stand for? What's the target?</span><span class="ru">— Как расшифровывается LCP? Какое целевое значение?</span></li><li><span class="en">Can Googlebot always see JavaScript content? Why?</span><span class="ru">— Может ли Googlebot всегда видеть JS-контент? Почему?</span></li><li><span class="en">What's the difference between robots.txt and Basic Auth?</span><span class="ru">— В чём разница между robots.txt и Basic Auth?</span></li></ul></div></div>
+  </div>
+</section>
+<section id="terms-cwv">
+  <div class="wrap">
+    <h2>Part 2A · Rendering & Core Web Vitals</h2>
+    <p class="section-kicker">словарь — 10 минут</p>
+    
+<div class="note">★ = самые важные для клиентских звонков и технических обсуждений</div>
+<div class="table-scroll"><table><thead><tr><th>Term</th><th>Произношение</th><th>Definition (EN)</th><th>Перевод (RU)</th><th>Example</th></tr></thead><tbody><tr><td>★ Core Web Vitals (CWV)</td><td>кор веб ВАЙ-тлз</td><td>Google's three main page experience metrics: LCP + CLS + INP. Bad CWV = lower rankings.</td><td>Три главные метрики пользовательского опыта от Google: LCP + CLS + INP. Плохой CWV = более низкие позиции.</td><td><span class="en">&laquo;Our CWV is poor — that's hurting rankings on mobile.&raquo;</span></td></tr><tr><td>★ LCP — Largest Contentful Paint</td><td>эл-си-пи</td><td>Time until the main content (hero image / headline) loads. Target: under 2.5 seconds.</td><td>Время до загрузки основного контента (главное изображение / заголовок). Цель: до 2.5 секунд.</td><td><span class="en">&laquo;LCP is 4.1s — above the 2.5s threshold. That costs us rankings.&raquo;</span></td></tr><tr><td>★ CLS — Cumulative Layout Shift</td><td>си-эл-эс</td><td>How much the page content shifts/jumps while loading. Target: below 0.1.</td><td>Насколько сильно контент страницы смещается при загрузке. Цель: менее 0.1.</td><td><span class="en">&laquo;Buttons jump when ads load. CLS is 0.32 — that's poor.&raquo;</span></td></tr><tr><td>★ INP — Interaction to Next Paint</td><td>ай-эн-пи</td><td>How fast the page reacts when a user clicks, taps or types. Target: under 200ms.</td><td>Скорость реакции страницы на клик, нажатие или ввод. Цель: менее 200 мс.</td><td><span class="en">&laquo;The filter takes 1.5s to respond. INP is critical — users leave.&raquo;</span></td></tr><tr><td>FCP — First Contentful Paint</td><td>эф-си-пи</td><td>When the first piece of content (any text or image) appears on screen.</td><td>Момент когда первый контент (любой текст или изображение) появляется на экране.</td><td><span class="en">&laquo;FCP is 3.2s — users see a blank screen for too long.&raquo;</span></td></tr><tr><td>★ Rendering</td><td>рен-дер-инг</td><td>Turning HTML/CSS/JavaScript into what you see on screen. Googlebot renders pages separately from users.</td><td>Превращение HTML/CSS/JavaScript в то, что видит пользователь. Googlebot рендерит страницы отдельно от пользователей.</td><td><span class="en">&laquo;The page renders fine in Chrome but Googlebot can't see the menu.&raquo;</span></td></tr><tr><td>★ CRP — Critical Rendering Path</td><td>си-ар-пи</td><td>The steps browser takes before showing content. Scripts in &lt;head&gt; block this path.</td><td>Шаги браузера до отображения контента. Скрипты в &lt;head&gt; блокируют этот путь.</td><td><span class="en">&laquo;Scripts in &lt;head&gt; block the CRP. Add defer — it fixes FCP immediately.&raquo;</span></td></tr><tr><td>★ async / defer</td><td>эй-синк / ди-фёр</td><td>HTML attributes that allow scripts to load without blocking the page. async = independent; defer = runs after HTML is parsed.</td><td>Атрибуты HTML, позволяющие скриптам загружаться без блокировки. async = независимый; defer = запускается после разбора HTML.</td><td><span class="en">&laquo;Add defer to all non-critical scripts. Fixes CRP immediately.&raquo;</span></td></tr><tr><td>★ DOM — Document Object Model</td><td>ди-оу-эм</td><td>The page structure after JavaScript runs — what the user and browser see. Different from raw HTML source.</td><td>Структура страницы после выполнения JavaScript — то, что видит пользователь и браузер. Отличается от исходного HTML.</td><td><span class="en">&laquo;F12 shows the DOM — after JS. Ctrl+U shows raw HTML — before JS.&raquo;</span></td></tr><tr><td>★ JavaScript rendering</td><td>джа-ва-скрипт рен-дер-инг</td><td>Content built by JavaScript after page load. Risk: Googlebot sees JS content with a delay — hours to weeks after first crawl.</td><td>Контент, построенный через JavaScript после загрузки. Риск: Googlebot видит, но с задержкой от часов до недель.</td><td><span class="en">&laquo;Product titles load via JS — AI sees an empty container.&raquo;</span></td></tr><tr><td>PageSpeed Insights</td><td>пейдж-спид ин-сайтс</td><td>Google's free tool to measure CWV — both lab data (Lighthouse) and field data (CrUX).</td><td>Бесплатный инструмент Google для измерения CWV — лабораторные данные (Lighthouse) и полевые данные (CrUX).</td><td><span class="en">&laquo;Run PSI first. Compare to the competitor — then prioritize fixes.&raquo;</span></td></tr><tr><td>Crawl Budget</td><td>кроул бад-жет</td><td>How many pages Googlebot crawls per day. Large sites with thin/duplicate content waste crawl budget.</td><td>Сколько страниц Googlebot обходит за день. Крупные сайты с тонким/дублирующим контентом тратят бюджет впустую.</td><td><span class="en">&laquo;50,000 pages, crawl budget 500/day — we need to prioritize key pages.&raquo;</span></td></tr></tbody></table></div>
+  </div>
+</section>
+<section id="terms-technical">
+  <div class="wrap">
+    <h2>Part 2B · Technical SEO Vocabulary</h2>
+    <p class="section-kicker">быстрый обзор — 6 минут</p>
+    <div class="table-scroll"><table><thead><tr><th>Term</th><th>Произношение</th><th>Definition (EN)</th><th>Перевод (RU)</th><th>Example</th></tr></thead><tbody><tr><td>★ robots.txt</td><td>РО-ботс.тиэксти</td><td>A file that tells Googlebot which pages NOT to crawl. Does NOT hide pages from Google index.</td><td>Файл, который говорит Googlebot какие страницы НЕ обходить. НЕ скрывает страницы от индекса Google.</td><td><span class="en">&laquo;robots.txt blocks crawling — but the page can still be indexed from external links.&raquo;</span></td></tr><tr><td>★ Basic Auth</td><td>бей-сик от</td><td>Password protection on a server level — completely blocks Googlebot. Use for staging/test sites.</td><td>Парольная защита на уровне сервера — полностью блокирует Googlebot. Используется для тестовых сайтов.</td><td><span class="en">&laquo;Use Basic Auth for staging — not robots.txt. It actually blocks access.&raquo;</span></td></tr><tr><td>★ 301 Redirect</td><td>три-ноль-один ри-ди-рект</td><td>Permanent redirect — tells Google and users that a page has moved. Passes most link equity.</td><td>Постоянный редирект — говорит Google и пользователям что страница переехала. Передаёт большую часть ссылочного веса.</td><td><span class="en">&laquo;Add 301 redirects for all old URLs after the domain migration.&raquo;</span></td></tr><tr><td>Canonical Tag (канонический тег)</td><td>ка-НОН-икл тэг</td><td>An HTML tag pointing to the preferred version of a page. Prevents duplicate content issues.</td><td>HTML-тег, указывающий на предпочтительную версию страницы. Предотвращает проблемы с дублирующим контентом.</td><td><span class="en">&laquo;Set canonical to the main URL — remove duplicates from the index.&raquo;</span></td></tr><tr><td>Sitemap (карта сайта)</td><td>САЙТ-мэп</td><td>An XML file listing all pages you want Google to crawl and index. Submit in GSC.</td><td>XML-файл со списком всех страниц, которые вы хотите чтобы Google обходил и индексировал. Отправляется через GSC.</td><td><span class="en">&laquo;Ping the sitemap after domain migration: google.com/ping?sitemap=URL&raquo;</span></td></tr><tr><td>Schema Markup (Schema-разметка)</td><td>СКИ-ма МАР-кап</td><td>Structured data code (JSON-LD) telling Google what the page is about. Enables rich snippets and AI answers.</td><td>Код структурированных данных (JSON-LD), сообщающий Google что на странице. Включает расширенные сниппеты и ИИ-ответы.</td><td><span class="en">&laquo;Add FAQ schema — it improves chances of appearing in AI Overviews.&raquo;</span></td></tr><tr><td>Reverse DNS Lookup</td><td>ри-вёрс ди-эн-эс</td><td>Checking if an IP address truly belongs to Googlebot. Real Googlebot resolves to googlebot.com</td><td>Проверка принадлежит ли IP-адрес реальному Googlebot. Настоящий Googlebot разрешается в googlebot.com</td><td><span class="en">&laquo;Suspicious crawler from that IP? Run reverse DNS — verify it's real Googlebot.&raquo;</span></td></tr></tbody></table></div>
+  </div>
+</section>
+<section id="explain">
+  <div class="wrap">
+    <h2>Part 3 · How to Explain It</h2>
+    <p class="section-kicker">как объяснить клиенту простыми словами — 6 минут</p>
+    
+<div class="info-card">
+      <div class="info-head"><h3>Why does page speed affect Google rankings?<small>Почему скорость страницы влияет на позиции в Google?</small></h3><span class="chip">⏱ 6 минут</span></div>
+      <p class="idea">Читаем вслух → закрываем → пересказываем.</p>
+      <div class="example-block"><span class="en">Here&rsquo;s the thing — Google measures three things called Core Web Vitals: LCP, CLS, and INP. These are user experience scores. So basically, if your main content takes more than 2.5 seconds to load — that&rsquo;s poor LCP. Which means Google gives your page a lower performance score. And that can cost you 5&ndash;10 positions on competitive queries. That&rsquo;s why fixing page speed isn&rsquo;t just a developer task — it&rsquo;s an SEO priority.</span><span class="ru">Вот в чём дело — Google измеряет три показателя, которые называются Core Web Vitals: LCP, CLS и INP. Это оценки пользовательского опыта. Короче говоря, если основной контент загружается дольше 2.5 секунд — это плохой LCP. А это значит, Google даёт странице низкий performance score. Это может стоить 5&ndash;10 позиций на конкурентных запросах. Вот почему улучшение скорости — это не только задача разработчика, это SEO-приоритет.</span></div>
+      <div class="chips"><span>Core Web Vitals</span><span>LCP</span><span>performance score</span><span>SEO priority</span></div>
+    </div>
+<div class="info-card">
+      <div class="info-head"><h3>Why can&rsquo;t robots.txt fully hide a test site from Google?<small>Почему robots.txt не может полностью скрыть тестовый сайт от Google?</small></h3><span class="chip">⏱ 6 минут</span></div>
+      <p class="idea">Читаем вслух → закрываем → пересказываем.</p>
+      <div class="example-block"><span class="en">Actually, robots.txt only blocks crawling — it doesn&rsquo;t hide the page. The thing is, if someone links to your staging site, Google can still see that the URL exists. I mean, it might even show up in search results as an empty snippet. That&rsquo;s why we use Basic Auth instead. It&rsquo;s server-level password protection — Googlebot literally cannot access the page at all.</span><span class="ru">На самом деле, robots.txt только блокирует обход — он не скрывает страницу. Дело в том, что если кто-то ссылается на ваш тестовый сайт, Google всё равно видит что URL существует. То есть он может даже появиться в поиске как пустой сниппет. Вот почему мы используем Basic Auth. Это парольная защита на уровне сервера — Googlebot буквально не может войти.</span></div>
+      <div class="chips"><span>robots.txt</span><span>Basic Auth</span><span>staging site</span><span>server-level protection</span></div>
+    </div>
+  </div>
+</section>
+<section id="dialogue">
+  <div class="wrap">
+    <h2>Part 4 · Dialogue Practice</h2>
+    <p class="section-kicker">практика диалога — 7 минут</p>
+    
+<div class="note">Диалог — разговор с разработчиком об оптимизации скриптов. 3 минуты чтение + 4 минуты ролевая игра.</div>
+<div class="compare-card"><div class="compare-row"><span class="compare-tag ">CLIENT</span><span><span class="en">The site is slow but I don&rsquo;t know where to start.</span><span class="ru">Сайт медленный, не знаю с чего начать.</span></span></div><div class="compare-row"><span class="compare-tag good">YOU</span><span><span class="en">Let&rsquo;s start with the CRP — the Critical Rendering Path. Basically, scripts in the &lt;head&gt; block the browser from showing content. Which means users see a blank screen while scripts load.</span><span class="ru">Начнём с CRP — Critical Rendering Path. По сути, скрипты в &lt;head&gt; блокируют браузер от отображения контента. А это значит — пользователи видят пустой экран пока скрипты грузятся.</span></span></div><div class="compare-row"><span class="compare-tag ">CLIENT</span><span><span class="en">What do I do with the scripts?</span><span class="ru">Что делать со скриптами?</span></span></div><div class="compare-row"><span class="compare-tag good">YOU</span><span><span class="en">Add async or defer to all non-critical scripts. That way the browser doesn&rsquo;t wait for them. On top of that, check if you actually need all your third-party scripts — some analytics tags alone add 500ms.</span><span class="ru">Добавьте async или defer ко всем некритичным скриптам. Так браузер не будет их ждать. Вдобавок проверьте нужны ли все сторонние скрипты — некоторые теги аналитики сами по себе добавляют 500 мс.</span></span></div><div class="compare-row"><span class="compare-tag ">CLIENT</span><span><span class="en">The content on product pages loads via JavaScript. Is that a problem?</span><span class="ru">Контент на страницах продуктов загружается через JavaScript. Это проблема?</span></span></div><div class="compare-row"><span class="compare-tag good">YOU</span><span><span class="en">Honestly, yes. Googlebot sees the raw HTML first — before JavaScript runs. I mean, if product titles and descriptions load via JS, Google might index an empty page. Check it with View Page Source — if the text isn&rsquo;t there, that&rsquo;s our problem.</span><span class="ru">Честно говоря, да. Googlebot сначала видит исходный HTML — до выполнения JavaScript. То есть если заголовки и описания продуктов загружаются через JS, Google может проиндексировать пустую страницу. Проверьте через View Page Source — если текста нет, это наша проблема.</span></span></div></div>
+<div class="info-card" style="margin-top:16px;">
+  <div class="info-head"><h3>2-phase model<small>двухфазная модель индексации JS-контента</small></h3></div>
+  <p class="idea">Волна 1 — Google видит raw HTML. Волна 2 — WRS (Web Rendering Service) рендерит JavaScript, иногда с задержкой от часов до недель.</p>
+  <div class="chips"><span>Wave 1 — raw HTML</span><span>Wave 2 — WRS renders JS</span></div>
+</div>
+  </div>
+</section>
+<section id="questions">
+  <div class="wrap">
+    <h2>Part 5 · Client Questions</h2>
+    <p class="section-kicker">отвечаем клиенту — 8 минут</p>
+    
+<div class="note">Каждый выбирает один вопрос и отвечает НА АНГЛИЙСКОМ, как будто разговаривает с реальным клиентом (60&ndash;90 секунд на человека).</div>
+<div class="accordion-grid"><details class="xcard">
+      <summary>
+        <span class="xcard-index">01</span>
+        <span class="xcard-heading"><span class="xcard-title">Q1. Does site speed actually hurt rankings?</span><span class="xcard-sub">Все говорят что наш сайт медленный. Это реально влияет на позиции в Google?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;Everyone says our site is slow. Does that actually hurt our Google rankings?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Да, скорость — официальный фактор с 2021 года (Core Web Vitals)</li><li>Главная метрика: LCP ≤ 2.5 сек</li><li>Ещё: CLS (смещение контента) и INP (отзывчивость)</li><li>Если конкуренты быстрее — у них прямое преимущество</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">02</span>
+        <span class="xcard-heading"><span class="xcard-title">Q2. How do we keep a test site out of Google?</span><span class="xcard-sub">У нас есть тестовая версия сайта — как сделать чтобы Google её не проиндексировал?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;We have a test version of the site — how do we make sure Google doesn&rsquo;t index it?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>robots.txt — не защита: страница остаётся публичной, Google может найти через внешние ссылки</li><li>Basic Auth — закрывает на уровне сервера, Googlebot физически не получит контент</li><li>noindex без Basic Auth тоже ненадёжно</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">03</span>
+        <span class="xcard-heading"><span class="xcard-title">Q3. Developer says fast, PageSpeed says slow — who&rsquo;s right?</span><span class="xcard-sub">Разработчик говорит что сайт грузится быстро, но Google PageSpeed говорит медленно. Кто прав?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;Our developer says the site loads fast — but Google PageSpeed says it&rsquo;s slow. Who&rsquo;s right?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Разработчик меряет на мощном ПК — это не реальность пользователя</li><li>PageSpeed симулирует слабый мобильный (Moto G4, медленный 4G)</li><li>Важнее всего CrUX — реальные данные пользователей за 28 дней</li><li>Googlebot = Headless Chromium, меряет LCP, не просто FCP</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">04</span>
+        <span class="xcard-heading"><span class="xcard-title">Q4. New CMS, broken features — what do we do?</span><span class="xcard-sub">Мы перешли на новую CMS, но часть функционала перестала работать. Что делать?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;We launched on a new CMS but some features stopped working. What do we do?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Сначала оцениваем: критично ли это для SEO и конверсий</li><li>Если нет — запускаемся, фиксируем как задачу после переезда</li><li>Если да — откладываем запуск до восстановления</li><li>В любом случае: тимлид и аккаунт-менеджер должны быть в курсе сразу</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">05</span>
+        <span class="xcard-heading"><span class="xcard-title">Q5. How do we protect a staging site from indexing?</span><span class="xcard-sub">Как защитить тестовый сайт от индексации Google?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;How do we protect a staging site from being indexed by Google?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Basic Auth — единственный надёжный способ: блокирует на уровне сервера</li><li>robots.txt — только рекомендация боту, страница остаётся публичной</li><li>noindex без Basic Auth — ненадёжно: Google может найти страницу через внешние ссылки</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">06</span>
+        <span class="xcard-heading"><span class="xcard-title">Q6. Domain migration — what&rsquo;s the correct sequence?</span><span class="xcard-sub">Мы переехали на новый домен. Какова правильная последовательность действий?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;We migrated to a new domain. What&rsquo;s the correct sequence?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>6 шагов: GSC → canonical (группа со ссылками) → canonical (прочие) → canonical (с трафиком) → 301-редиректы через 2 недели → серверный редирект</li><li>После запуска: ping sitemap через google.com/ping?sitemap=URL</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">07</span>
+        <span class="xcard-heading"><span class="xcard-title">Q7. PageSpeed shows bad metrics — where do we start?</span><span class="xcard-sub">PageSpeed показывает плохие метрики. С чего начать диагностику?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;PageSpeed shows bad metrics. Where do we start diagnosing?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Берём нашу медленную страницу + аналогичную страницу конкурента</li><li>Прогоняем обе через WebPageTest на мобильном профиле</li><li>В водопаде ищем: блокирующие скрипты в &lt;head&gt;, тяжёлые сторонние скрипты, высокий TTFB</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">08</span>
+        <span class="xcard-heading"><span class="xcard-title">Q8. How do we check JS content is visible to Googlebot?</span><span class="xcard-sub">Как проверить что JavaScript-контент виден Googlebot?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;How do we check that JavaScript content is visible to Googlebot?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>GSC → Inspect URL → View Crawled Page → смотрим скриншот</li><li>Если блоки есть в браузере но нет в GSC-версии — проблема рендеринга</li><li>Дополнительно: Screaming Frog с JS-рендерингом</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">09</span>
+        <span class="xcard-heading"><span class="xcard-title">Q9. Canonical is set — but does Googlebot actually see it?</span><span class="xcard-sub">Canonical-тег прописан — но мы не уверены что Googlebot его видит.</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;Our canonical tag is set — but we&rsquo;re not sure Googlebot actually sees it.&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Ctrl+U (View Page Source) = исходный HTML до JS — это видит Googlebot при первом проходе</li><li>F12 = DOM после JS — это видит пользователь</li><li>Если canonical только в JS — Googlebot может не увидеть его до рендеринга</li><li>Проверить финально: GSC → Inspect URL</li></ul></div>
+    </details><details class="xcard">
+      <summary>
+        <span class="xcard-index">10</span>
+        <span class="xcard-heading"><span class="xcard-title">Q10. New CMS — what must be in the technical requirements?</span><span class="xcard-sub">Мы переходим на новую CMS. Что обязательно должно быть в техническом задании?</span></span>
+        <span class="xcard-chevron">⌄</span>
+      </summary>
+      <div class="xcard-body"><blockquote class="script">&laquo;We&rsquo;re moving to a new CMS. What must be in the technical requirements?&raquo;</blockquote>
+      <h5>Ключевые пункты ответа</h5>
+      <ul><li>Обязательно: сохранение URL-структуры, 301-редиректы, перенос Title/H1/Description, robots.txt, sitemap.xml, SSL, мобильная адаптация</li><li>Не входит в этот этап: новый дизайн, дополнительная оптимизация скорости, Schema — если не было раньше</li></ul></div>
+    </details></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <a href="/lessons/12/" class="footer-back">← Урок 12: Semantic SEO + GEO</a>
+    <a href="/lessons/14/" class="footer-next">Урок 14: Допродажа →</a>
+  </div>
+</footer>
+
+</body>
+</html>

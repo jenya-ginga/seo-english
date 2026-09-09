@@ -13,11 +13,11 @@ lessons = [
   ("Role Play: Reverse Roles", "/lessons/8/"),
   ("Все фразовые глаголы в контексте SEO", "/lessons/9/"),
   ("Кейсы с нейтивом", "/lessons/10/"),
-  ("Урок 11", None),
-  ("Урок 12", None),
-  ("Урок 13", None),
-  ("Урок 14", None),
-  ("Урок 15", None),
+  ("Словарик: связки и термины 2026", "/lessons/11/"),
+  ("Semantic SEO + GEO практика", "/lessons/12/"),
+  ("Rendering & Page Speed + Technical SEO", "/lessons/13/"),
+  ("Допродажа во время звонка", "/lessons/14/"),
+  ("Сателлиты в SEO и их влияние на LLM", "/lessons/15/"),
 ]
 
 lessons_js = ",\n  ".join(
