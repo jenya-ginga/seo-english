@@ -43,6 +43,17 @@
 .gl-letters button{font-family:var(--mono);font-size:12px;font-weight:600;border:1px solid var(--ink-soft);border-radius:2px;background:var(--paper);color:var(--ink);padding:4px 9px;cursor:pointer;}
 .gl-letters button.on{background:var(--ink);color:var(--paper);}
 .pb-jump{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px;}
+.gl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+@media (max-width:760px){.gl-grid{grid-template-columns:1fr;}}
+.gl-card{display:flex;flex-direction:column;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+.gl-card.is-star{border-color:var(--accent);}
+.gl-term{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.25;margin:0;color:var(--ink);}
+.gl-ipa{font-family:"Noto Sans","Segoe UI","DejaVu Sans","Arial Unicode MS",system-ui,sans-serif;font-size:14px;color:var(--accent-ink);letter-spacing:.01em;}
+.gl-ru{margin:2px 0 0;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);}
+.gl-def{margin:0;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink);}
+.gl-def-ru{margin:0;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink-soft);}
+.gl-ex{margin:2px 0 0;padding-left:12px;border-left:2px solid var(--line);font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.5;color:var(--ink-soft);}
+.gl-meta{margin-top:auto;padding-top:6px;}
 </style>
 <section id="search">
   <div class="wrap">

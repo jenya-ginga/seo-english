@@ -12,6 +12,7 @@ import os
 import re
 
 from build import page
+import ipa
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LESSON_COUNT = 16
@@ -143,20 +144,25 @@ def lesson_links(ls):
 
 
 def gl_row(t):
-    star = "★ " if t["star"] else ""
-    cls = ' class="strong-cell"' if t["star"] else ""
+    """One glossary card (grid layout)."""
+    star = t["star"]
+    ip, missing = ipa.term_ipa(t["term"])
+    assert not missing, (t["term"], missing)
     parts = []
     if t["ru"]:
-        parts.append(f'<span style="display:block; font-weight:600;">{esc(t["ru"])}</span>')
+        parts.append(f'<p class="gl-ru">{esc(t["ru"])}</p>')
     if t["def_en"]:
-        parts.append(f'<span style="display:block; font-family:var(--serif); font-style:italic; font-size:14.5px; line-height:1.5;">{esc(t["def_en"])}</span>')
+        parts.append(f'<p class="gl-def">{esc(t["def_en"])}</p>')
     if t["def_ru"]:
-        parts.append(f'<span class="ru-sub" style="font-size:12.5px; margin-top:6px;">{esc(t["def_ru"])}</span>')
-    ex = (f'&ldquo;{esc(t["example"])}&rdquo;' if t["example"] else "")
+        parts.append(f'<p class="gl-def-ru">{esc(t["def_ru"])}</p>')
+    if t["example"]:
+        parts.append(f'<p class="gl-ex">&ldquo;{esc(t["example"])}&rdquo;</p>')
     first = t["term"][:1].upper()
-    return (f'<tr data-letter="{esc(first)}"><td{cls}>{star}{esc(t["term"])}<span style="display:block; margin-top:6px;">{lesson_links(t["lessons"])}</span></td><td>{esc(t["pron"])}</td>'
-            f'<td>{"".join(parts)}</td>'
-            f'<td style="font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-soft);">{ex}</td></tr>')
+    return (f'<article class="gl-card{" is-star" if star else ""}" data-letter="{esc(first)}">'
+            f'<h3 class="gl-term">{"★ " if star else ""}{esc(t["term"])}</h3>'
+            f'<div class="gl-ipa" lang="en-US" title="Американское произношение (IPA)">{esc(ip)}</div>'
+            f'{"".join(parts)}'
+            f'<div class="gl-meta">{lesson_links(t["lessons"])}</div></article>')
 
 
 SEARCH_CSS = '''<style>
@@ -169,21 +175,28 @@ SEARCH_CSS = '''<style>
 .gl-letters button{font-family:var(--mono);font-size:12px;font-weight:600;border:1px solid var(--ink-soft);border-radius:2px;background:var(--paper);color:var(--ink);padding:4px 9px;cursor:pointer;}
 .gl-letters button.on{background:var(--ink);color:var(--paper);}
 .pb-jump{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px;}
+.gl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+@media (max-width:760px){.gl-grid{grid-template-columns:1fr;}}
+.gl-card{display:flex;flex-direction:column;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+.gl-card.is-star{border-color:var(--accent);}
+.gl-term{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.25;margin:0;color:var(--ink);}
+.gl-ipa{font-family:"Noto Sans","Segoe UI","DejaVu Sans","Arial Unicode MS",system-ui,sans-serif;font-size:14px;color:var(--accent-ink);letter-spacing:.01em;}
+.gl-ru{margin:2px 0 0;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);}
+.gl-def{margin:0;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink);}
+.gl-def-ru{margin:0;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink-soft);}
+.gl-ex{margin:2px 0 0;padding-left:12px;border-left:2px solid var(--line);font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.5;color:var(--ink-soft);}
+.gl-meta{margin-top:auto;padding-top:6px;}
 </style>'''
 
 letters = sorted({t["term"][:1].upper() for t in glossary if t["term"][:1].isalpha()})
 letter_buttons = '<button type="button" class="on" data-l="">Все</button>' + "".join(
     f'<button type="button" data-l="{l}">{l}</button>' for l in letters)
 
-gl_table = (
-    '<div class="table-scroll"><table id="gl-table"><thead><tr>'
-    '<th>Term · урок</th><th>Произношение</th><th>Перевод / Definition</th><th>Example</th>'
-    f'</tr></thead><tbody>{"".join(gl_row(t) for t in glossary)}</tbody></table></div>'
-)
+gl_table = f'<div class="gl-grid" id="gl-grid">{"".join(gl_row(t) for t in glossary)}</div>'
 
 GL_JS = '''<script>
 (function(){
-  var q=document.getElementById('gl-q'), rows=[].slice.call(document.querySelectorAll('#gl-table tbody tr')),
+  var q=document.getElementById('gl-q'), rows=[].slice.call(document.querySelectorAll('#gl-grid .gl-card')),
       cnt=document.getElementById('gl-count'), empty=document.getElementById('gl-empty'),
       btns=[].slice.call(document.querySelectorAll('.gl-letters button')), letter='';
   function apply(){
@@ -205,15 +218,15 @@ GL_JS = '''<script>
 
 gl_body = f'''{SEARCH_CSS}
 <section id="terms">
-  <div class="wrap">
+  <div class="wrap wide">
     <h2>Все термины · A–Z</h2>
-    <p class="section-kicker">{len(glossary)} терминов из уроков 11–16, с транскрипцией и ссылкой на урок</p>
+    <p class="section-kicker">{len(glossary)} терминов из уроков 11–16, с IPA-транскрипцией и ссылкой на урок</p>
     <input id="gl-q" class="gl-search" type="search" placeholder="Поиск: термин, перевод, пример…" autocomplete="off">
     <div class="gl-letters">{letter_buttons}</div>
     <p id="gl-count" class="gl-count"></p>
     {gl_table}
     <div id="gl-empty" class="note gl-empty">Ничего не найдено. Попробуйте другое слово или сбросьте букву.</div>
-    <p class="note">★ — самые важные для клиентских звонков. Транскрипция приблизительная, как в уроках. Номер урока ведёт на страницу, где термин разобран.</p>
+    <p class="note">★ — самые важные для клиентских звонков. Транскрипция — международный фонетический алфавит (IPA), американское произношение; аббревиатуры читаются по буквам. Номер урока ведёт на страницу, где термин разобран.</p>
   </div>
 </section>
 {GL_JS}'''
