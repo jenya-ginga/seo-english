@@ -20,13 +20,20 @@ def term_re(term):
 
 
 def short_hint(t):
-    if t["ru"] and len(t["ru"]) <= 90:
-        return t["ru"]
+    """A hint must describe the answer, not hand it over: prefer the Russian definition, and drop
+    any hint that has no Cyrillic or that contains the term itself."""
+    cands = []
     d = t["def_ru"]
-    if not d:
-        return ""
-    first = re.split(r"(?<=[.!?])\s", d)[0]
-    return first if len(first) <= 150 else first[:147].rstrip() + "…"
+    if d:
+        first = re.split(r"(?<=[.!?])\s", d)[0]
+        cands.append(first if len(first) <= 150 else first[:147].rstrip() + "…")
+    if t["ru"] and len(t["ru"]) <= 90:
+        cands.append(t["ru"])
+    base = re.sub(r"\s*\([^)]*\)", "", t["term"]).strip().lower()
+    for c in cands:
+        if re.search(r"[А-Яа-яЁё]", c) and base not in c.lower():
+            return c
+    return ""
 
 
 # ---- 1. gaps: example sentences with the term blanked out

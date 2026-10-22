@@ -220,7 +220,7 @@
 
     var tools = h('label', 'pr-toggle');
     var cb = document.createElement('input'); cb.type = 'checkbox';
-    tools.appendChild(cb); tools.appendChild(document.createTextNode(' Скрыть подсказки (сложнее)'));
+    tools.appendChild(cb); tools.appendChild(document.createTextNode(' Показать подсказки (легче)'));
     f.board.appendChild(tools);
 
     var pool = h('div', 'pr-pool pr-sticky');
@@ -228,7 +228,7 @@
       .concat(extra.map(function (g) { return chipEl(g.answer, 'x' + g.id); }))).forEach(function (c) { pool.appendChild(c); });
     f.board.appendChild(pool);
 
-    var list = h('div', 'pr-sents');
+    var list = h('div', 'pr-sents no-hints');
     items.forEach(function (g) {
       var row = h('div', 'pr-sent');
       var p = h('p', 'pr-sent-text');
@@ -242,7 +242,7 @@
       list.appendChild(row);
     });
     f.board.appendChild(list);
-    cb.addEventListener('change', function () { list.classList.toggle('no-hints', cb.checked); });
+    cb.addEventListener('change', function () { list.classList.toggle('no-hints', !cb.checked); });
 
     DnD(f.board, {
       onDrop: function (chip, zone) {
