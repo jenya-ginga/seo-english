@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from build import HEAD_FONTS, write
+from build import HEAD_FONTS, ROOT
 
 lessons = [
   ("Просто о временах: как сказать о действии", "/lessons/1/",
@@ -55,7 +55,7 @@ def col_item(i, title, href, dek):
 
 columns_html = "\n    ".join(col_item(i, t, h, d) for i, (t, h, d) in enumerate(lessons))
 
-html = f'''<!DOCTYPE html>
+gazette_html = f'''<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -153,4 +153,114 @@ html = f'''<!DOCTYPE html>
 </body>
 </html>
 '''
-write("index.html", html)
+
+
+# ---------- gazette cover moves to /gazette/ (extra section) ----------
+gazette_html = gazette_html.replace(
+    "<title>Global English для SEO — платформа уроков</title>",
+    "<title>The SEO English Gazette — Global English для SEO</title>", 1)
+gazette_html = gazette_html.replace(
+    '<a class="navlink" href="#lessons">Уроки</a>',
+    '<a class="navlink" href="/">Главная</a>\n      <a class="navlink" href="#lessons">Уроки</a>', 1)
+gazette_html = gazette_html.replace(
+    '<div class="wrap">Global English for SEO — платформа команды</div>',
+    '<div class="wrap"><a class="footer-back" href="/">← На главную</a></div>', 1)
+
+# ---------- classic home ----------
+def lesson_card(i, title, href, dek):
+    return f'''<a class="hm-card" href="{href}">
+        <span class="hm-num">Урок {i+1}</span>
+        <span class="hm-card-title">{title}</span>
+        <span class="hm-card-dek">{dek}</span>
+      </a>'''
+
+cards_html = "\n      ".join(lesson_card(i, t, h, d) for i, (t, h, d) in enumerate(lessons))
+
+extras = [
+  ("/glossary/", "Глоссарий", "137 SEO-терминов на английском: транскрипция, перевод, определение, пример. Поиск и фильтр по буквам."),
+  ("/phrasebook/", "Разговорник", "Шпаргалка фраз-спасателей из всех уроков: 476 фраз, поиск и быстрый переход к уроку."),
+  ("/game/", "Спринт-тренажёр", "Командная игра на скорость по урокам 1–15: карточки, таймер и счёт для группы от 5 до 10 человек."),
+  ("/gazette/", "Газета курса", "Прежняя обложка в стиле газеты — «The SEO English Gazette»."),
+]
+extras_html = "\n      ".join(
+    f'''<a class="hm-card hm-extra" href="{h}">
+        <span class="hm-card-title">{t}</span>
+        <span class="hm-card-dek">{d}</span>
+      </a>''' for h, t, d in extras)
+
+home_html = f'''<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global English для SEO — уроки английского для SEO-команды</title>
+<meta name="description" content="Английский для SEO-команды: {len(lessons)} уроков, глоссарий, разговорник и спринт-тренажёр. Времена, отчёты клиентам, живые диалоги, GEO и Semantic SEO, ролевые игры.">
+{HEAD_FONTS}
+<script src="/assets/ambient.js" defer></script>
+</head>
+<body class="home">
+
+<nav class="topnav">
+  <div class="wrap wide">
+    <a href="/" class="brand"><span class="dot"></span>Global English для SEO</a>
+    <div class="navlinks">
+      <a class="navlink" href="#lessons">Уроки</a>
+      <a class="navlink" href="/glossary/">Глоссарий</a>
+      <a class="navlink" href="/phrasebook/">Разговорник</a>
+      <a class="navlink" href="/game/">Тренажёр</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap wide hm-hero">
+    <p class="hm-eyebrow">Английский для SEO-команды</p>
+    <h1 class="hm-title">Global English для SEO</h1>
+    <p class="hm-lede">Как объяснить клиенту позиции, отчёты и задержки на живом английском — без пауз и заученных фраз. {len(lessons)} практических уроков, глоссарий, разговорник и командный тренажёр.</p>
+    <div class="hm-actions">
+      <a class="hm-btn" href="/lessons/1/">Начать с урока 1</a>
+      <a class="hm-btn ghost" href="/game/">Спринт-тренажёр</a>
+    </div>
+    <dl class="hm-stats">
+      <div><dt>{len(lessons)}</dt><dd>уроков</dd></div>
+      <div><dt>137</dt><dd>терминов в глоссарии</dd></div>
+      <div><dt>476</dt><dd>фраз в разговорнике</dd></div>
+      <div><dt>1</dt><dd>командный тренажёр</dd></div>
+    </dl>
+  </div>
+
+  <div class="wrap wide hm-block" id="lessons">
+    <h2 class="hm-h2">Все уроки</h2>
+    <p class="hm-sub">Можно идти по порядку или открыть нужную тему.</p>
+    <div class="hm-grid">
+      {cards_html}
+    </div>
+  </div>
+
+  <div class="wrap wide hm-block" id="sections">
+    <h2 class="hm-h2">Дополнительные разделы</h2>
+    <p class="hm-sub">Справочники и практика к урокам.</p>
+    <div class="hm-grid hm-grid-extra">
+      {extras_html}
+    </div>
+  </div>
+</main>
+
+<footer class="hm-footer">
+  <div class="wrap wide">Global English для SEO — платформа команды</div>
+</footer>
+
+</body>
+</html>
+'''
+
+_repo = os.path.dirname(ROOT)
+def write_root(path, content):
+    full = os.path.join(_repo, path)
+    os.makedirs(os.path.dirname(full), exist_ok=True)
+    with open(full, "w", encoding="utf-8") as f:
+        f.write(content)
+    print("wrote", path, len(content), "bytes")
+
+write_root("index.html", home_html)
+write_root("gazette/index.html", gazette_html)
