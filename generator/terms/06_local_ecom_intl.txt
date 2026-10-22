@@ -1,0 +1,40 @@
+## Локальный, e-commerce, международный
+Local SEO | локальный SEO | Optimizing a business to appear in searches tied to a location. | Local SEO is the main channel for the locksmith.
+NAP | NAP (название, адрес, телефон) | A business's name, address and phone number as listed online. | NAP must be identical on every listing.
+Map pack | карта результатов | Another name for the local pack: a map with local business listings. | The map pack takes the whole first screen on mobile.
+Service area business | бизнес с выездом | A business that serves customers at their location rather than at its own office. | A service area business can hide its address.
+Reviews | отзывы | Customer opinions published online about a business or product. | Reviews strongly influence clicks in local results.
+Review response | ответ на отзыв | A reply from the business to a customer review. | A polite review response shows care for customers.
+Local landing page | локальная посадочная | A page built for a specific city or location. | Each local landing page needs unique content.
+Geo-targeting | геотаргетинг | Aiming content or ads at a specific location. | Geo-targeting is set in Search Console for one country.
+Proximity | близость | How near a business is to the searcher, a local ranking factor. | Proximity is hard to influence for a business.
+Prominence | известность | How well known and trusted a business is, a local ranking factor. | Prominence grows with reviews and links.
+Local citations | локальные упоминания | Mentions of a business's NAP on other websites. | We cleaned the inconsistent local citations.
+Local schema | локальная разметка | Structured data that describes a local business. | Local schema includes address and opening hours.
+E-commerce SEO | SEO для интернет-магазинов | Optimizing an online store to get more organic traffic and sales. | E-commerce SEO focuses on category and product pages.
+Product schema | разметка товара | Structured data describing a product, its price and availability. | Product schema enables price and rating in results.
+Merchant listing | листинг продавца | A free product listing on Google Shopping surfaces. | The feed powers the merchant listing in Google.
+Google Merchant Center | Google Merchant Center | A tool for uploading product data to Google. | Fix the errors in Google Merchant Center.
+Product feed | товарный фид | A file with product data for shopping platforms. | The product feed lacks GTIN codes.
+Out-of-stock page | страница товара не в наличии | A product page for an item that is currently unavailable. | Keep the out-of-stock page live if the item returns soon.
+Product variant | вариант товара | A version of a product with a different size, colour or model. | Don't create a separate URL for every product variant.
+Product description | описание товара | The text that presents a product to the buyer. | Write a unique product description, not the supplier's text.
+Customer review markup | разметка отзывов | Structured data for customer reviews and ratings. | Customer review markup must reflect real reviews.
+Shopping cart | корзина | The page where selected products are collected before checkout. | Block the shopping cart from indexing.
+Checkout | оформление заказа | The process where a customer enters details and pays. | Checkout friction kills conversions.
+Abandoned cart | брошенная корзина | A cart left by a user who did not complete the purchase. | An email can recover an abandoned cart.
+Average order value (AOV) | средний чек (AOV) | The average amount spent per order. | Bundles raised the average order value.
+Cross-selling | кросс-продажи | Offering related products to the buyer. | Cross-selling increased the average order value.
+Upselling | допродажа более дорогого | Persuading the buyer to choose a pricier version of a product. | Upselling works best at the product page.
+International SEO | международный SEO | Optimizing a site for users in different countries and languages. | International SEO needs a clear URL structure.
+Multilingual site | многоязычный сайт | A site that offers content in several languages. | A multilingual site needs hreflang annotations.
+Multiregional site | мультирегиональный сайт | A site that targets users in several countries. | The multiregional site uses subfolders for each country.
+ccTLD | национальный домен (ccTLD) | A country-code top-level domain such as .de or .fr. | A ccTLD gives a strong geo signal.
+Subdirectory | подпапка | A part of a site in a folder, for example example.com/de/. | We chose a subdirectory for each language.
+Subdomain | поддомен | A separate part of a domain, such as blog.example.com. | The blog lives on a subdomain.
+x-default | x-default | A hreflang value that marks the default page for unmatched users. | Set x-default to the language selector page.
+Localization | локализация | Adapting content to the language and culture of a market. | Localization goes beyond translation.
+Transcreation | транскреация | Creative adaptation of a message for another market. | Slogans need transcreation, not word-for-word translation.
+Machine translation | машинный перевод | Translation produced automatically by software. | Machine translation needs a native review.
+Native speaker | носитель языка | A person who speaks a language as their first language. | A native speaker checked the German texts.
+Geo-blocking | геоблокировка | Restricting access to content based on the visitor's location. | Geo-blocking can stop Googlebot from seeing the page.

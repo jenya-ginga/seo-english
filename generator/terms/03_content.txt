@@ -1,0 +1,63 @@
+## Контент и on-page
+On-page SEO | on-page SEO | Optimizing the content and HTML of individual pages. | On-page SEO covers titles, headings and content.
+Off-page SEO | off-page SEO | Activities outside the site that influence its visibility, mainly links and mentions. | Off-page SEO depends on links and brand mentions.
+Content strategy | контент-стратегия | A plan for what content to create, for whom and why. | The content strategy is built around buyer questions.
+Content audit | контент-аудит | A review of existing pages to decide what to keep, update, merge or remove. | The content audit found many outdated posts.
+Content gap | контентный разрыв | A topic that competitors cover and your site does not. | The content gap analysis shows no pages about pricing.
+Content brief | бриф на контент | A document that tells a writer what to cover and how. | Send the content brief to the writer today.
+Content calendar | контент-план | A schedule of planned content and publication dates. | We update the content calendar every month.
+Content refresh | обновление контента | Updating an old page to keep it accurate and useful. | A content refresh lifted the page back to the first page.
+Content pruning | прореживание контента | Removing or merging low-value pages to improve overall quality. | Content pruning removed 80 thin posts.
+Thin content | тонкий контент | Pages with little or no original value for users. | Thin content on tag pages should be noindexed.
+Evergreen content | вечнозелёный контент | Content that stays relevant for a long time. | Evergreen content keeps bringing traffic for years.
+Pillar content | опорный контент | A broad, in-depth page that anchors a topic cluster. | The guide works as pillar content for the whole section.
+Cornerstone content | основной (cornerstone) контент | The most important pages that you want to rank for key topics. | Link every new article to the cornerstone content.
+Landing page | посадочная страница | A page where visitors arrive, often built for one goal. | The landing page needs a clearer call to action.
+Category page | страница категории | A page that lists products or articles of one group. | The category page has no unique text.
+Product page | страница товара | A page that presents one product with price and details. | The product page lacks reviews and specifications.
+Title tag | тег title | The HTML title of a page, shown in results and browser tabs. | Keep the title tag under about sixty characters.
+Meta description | мета-описание | A short summary of a page that may be used as the result snippet. | A good meta description improves click-through rate.
+Heading tags | теги заголовков | HTML tags from H1 to H6 that structure the content. | Use heading tags to show the page hierarchy.
+H1 tag | заголовок H1 | The main heading of a page. | Each page should have one clear H1 tag.
+Header hierarchy | иерархия заголовков | The nested order of headings on a page. | Fix the header hierarchy so H3 doesn't skip to H1.
+Snippet | сниппет | The text and link shown for a result in the SERP. | The snippet cuts off the key benefit.
+Search snippet optimization | оптимизация сниппета | Adjusting title and description to earn more clicks. | Search snippet optimization is a quick win here.
+Internal link | внутренняя ссылка | A link from one page of a site to another page of the same site. | Add an internal link from the guide to the service page.
+Anchor | анкор | The clickable words of a link. | Use a descriptive anchor, not "click here".
+Contextual link | контекстная ссылка | A link placed inside the body text. | A contextual link carries more meaning than a footer link.
+Link equity | ссылочный вес | The value passed from one page to another through links. | Link equity flows from the homepage to the categories.
+Related posts | похожие материалы | A block that links to similar articles. | Related posts keep readers on the site longer.
+Table of contents | оглавление | A list of links to the sections of a long page. | A table of contents helps readers jump to the answer.
+Jump link | якорная ссылка | A link that scrolls to a specific section of the same page. | A jump link under the intro leads to the pricing section.
+Call to action (CTA) | призыв к действию (CTA) | A prompt that tells the visitor what to do next. | The call to action is hidden below the fold.
+Above the fold | первый экран | The part of a page visible without scrolling. | The key message is above the fold.
+User-generated content (UGC) | пользовательский контент (UGC) | Content created by users, such as reviews and comments. | User-generated content adds fresh text to product pages.
+FAQ page | страница FAQ | A page with common questions and short answers. | The FAQ page answers pre-sales objections.
+How-to guide | пошаговое руководство | A step-by-step article that explains how to do something. | A how-to guide fits this informational query.
+Listicle | подборка-список | An article built as a numbered or bulleted list. | The listicle ranks for several comparison queries.
+Comparison page | страница сравнения | A page that compares products, services or options. | The comparison page has strong commercial intent.
+Case study | кейс | A detailed story of a project with the problem, actions and results. | We'll publish the case study after the client approves.
+Whitepaper | белая книга (whitepaper) | An in-depth report that presents research or expertise. | The whitepaper works as a lead magnet.
+Lead magnet | лид-магнит | A free resource offered in exchange for contact details. | The checklist is our lead magnet.
+Topical map | тематическая карта | A plan of all the topics and subtopics a site should cover. | We built the topical map before writing anything.
+Semantic keywords | семантически связанные слова | Related words and phrases that describe a topic. | Add semantic keywords naturally, don't force them.
+LSI keywords | LSI-ключи | A common but loosely used name for related terms; search engines don't use LSI as such. | Please don't call them LSI keywords; they are just related terms.
+Natural language | естественный язык | The way people normally speak and write. | Write in natural language, not keyword lists.
+Readability | читабельность | How easy a text is to read and understand. | Readability improved after we shortened the sentences.
+Content depth | глубина раскрытия темы | How completely a page covers a topic. | The competitors have more content depth.
+Original research | собственное исследование | New data or findings produced by the site itself. | Original research earns links and AI citations.
+First-hand experience | личный опыт | Direct, real-life experience with a topic or product. | Show first-hand experience with photos and details.
+Author bio | биография автора | A short profile of the person who wrote the content. | Add an author bio with real credentials.
+Expert review | экспертная проверка | A check of content by a qualified specialist. | Medical pages need an expert review.
+Editorial guidelines | редакционные правила | Rules that define how content is written, checked and updated. | We published our editorial guidelines on the About page.
+Fact-checking | проверка фактов | Verifying claims against reliable sources. | Fact-checking is required for every statistic.
+Helpful content | полезный контент | Content created mainly to help people, not to rank. | Helpful content answers the question in the first paragraph.
+People-first content | контент для людей | Content designed for the reader's needs first, then for search. | We follow a people-first content approach.
+Search-first content | контент для поисковиков | Content written mainly to rank, with little value for readers. | Search-first content is what updates aim to reduce.
+AI-generated content | контент, созданный ИИ | Text produced by an AI model. | AI-generated content needs a human edit and fact-check.
+Content at scale | контент в промышленных масштабах | Producing large volumes of pages, with or without automation. | Content at scale only works if each page has real value.
+Programmatic SEO | программный SEO | Creating many pages from templates and structured data. | Programmatic SEO suits large directories with unique data.
+Copywriter | копирайтер | A person who writes marketing or SEO texts. | The copywriter needs the brief by Monday.
+SEO copywriting | SEO-копирайтинг | Writing texts that serve readers and match search queries. | SEO copywriting starts with the search intent.
+Proofreading | вычитка | Checking a text for errors before publishing. | Proofreading caught two broken links.
+Publishing cadence | периодичность публикаций | How often new content goes live. | We agreed on a weekly publishing cadence.

@@ -15,6 +15,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def term_re(term):
+    term = re.sub(r"\s*\([^)]*\)", "", term).strip()          # "Core Web Vitals (CWV)" -> "Core Web Vitals"
     return re.compile(r'(?<![A-Za-z0-9])' + re.escape(term) + r'(?![A-Za-z0-9])', re.I)
 
 
@@ -32,15 +33,17 @@ def short_hint(t):
 gaps = []
 for i, t in enumerate(G.glossary):
     ex = t["example"]
-    m = term_re(t["term"]).search(ex) if ex else None
-    if not m:
+    rx = term_re(t["term"])
+    m = rx.search(ex) if ex else None
+    if not m or len(rx.findall(ex)) != 1:      # the term must occur exactly once, or the blank leaks the answer
         continue
     gaps.append(dict(id=f"g{i}", before=ex[:m.start()], after=ex[m.end():], answer=m.group(0),
                      hint=short_hint(t)))
 
 # ---- 2. term -> short Russian translation
 pairs = [dict(id=f"p{i}", term=t["term"], ru=t["ru"])
-         for i, t in enumerate(G.glossary) if t["ru"] and len(t["ru"]) <= 45]
+         for i, t in enumerate(G.glossary)
+         if t["ru"] and len(t["ru"]) <= 45 and re.search(r"[А-Яа-яЁё]", t["ru"])]
 
 # ---- 5. Russian definition -> term
 defs = [dict(id=f"d{i}", term=t["term"], **{"def": t["def_ru"]})

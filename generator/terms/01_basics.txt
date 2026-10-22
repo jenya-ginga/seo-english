@@ -1,0 +1,54 @@
+## Основы поиска и ранжирования
+Search engine | поисковая система | A tool that finds, ranks and shows web pages for a query. | Google is the main search engine in this market.
+Query | поисковый запрос | The words a person types or says into a search engine. | This query has strong commercial intent.
+Keyword | ключевое слово (ключ) | A word or phrase that people search for and a page targets. | We map one primary keyword to each page.
+Long-tail keyword | длиннохвостый запрос | A specific, longer query with lower volume and clearer intent. | Long-tail keywords convert better for this shop.
+Head term | высокочастотный запрос | A short, broad keyword with high search volume. | The head term is too competitive for a new site.
+Seed keyword | базовый ключ | A starting keyword used to discover related queries. | Start with a seed keyword and expand from there.
+Search volume | частотность запроса | The average number of searches for a keyword per month. | The search volume for this keyword is low but steady.
+Keyword difficulty | сложность ключа | An estimate of how hard it is to rank for a keyword. | Keyword difficulty is high, so we need strong links.
+Keyword research | подбор ключевых слов | Finding and evaluating the queries worth targeting. | Keyword research shows a gap in comparison queries.
+Keyword mapping | распределение ключей по страницам | Assigning target keywords to specific pages. | We finished keyword mapping for all service pages.
+Keyword cannibalization | каннибализация запросов | Several pages of one site competing for the same query. | Keyword cannibalization is why these two pages keep swapping places.
+Keyword stuffing | переспам ключами | Overusing keywords unnaturally to manipulate rankings. | Keyword stuffing makes the text hard to read.
+Ranking factor | фактор ранжирования | A signal a search engine may use to order results. | We can't control every ranking factor, but we can improve the ones on the page.
+Ranking position | позиция в выдаче | The place a URL holds in the results for a query. | The page moved to ranking position 4 this week.
+Rank tracking | отслеживание позиций | Monitoring keyword positions over time. | Rank tracking shows steady growth since the migration.
+Indexing | индексация | Storing a page so that it can appear in search results. | Indexing of the new pages took a few days.
+Crawling | сканирование (краулинг) | A bot discovering pages by following links. | Crawling comes first, then indexing.
+Crawler | краулер (поисковый робот) | A bot that fetches pages for a search engine. | Make sure the crawler can reach the pricing pages.
+Googlebot | Googlebot | Google's web crawler. | Googlebot visits the blog every day.
+Page indexing report | отчёт об индексировании страниц | A Search Console report showing which pages are indexed and why others are not. | The page indexing report lists 40 excluded URLs.
+SERP | страница результатов поиска | The page a search engine shows in response to a query. | Our result sits right below the featured snippet on the SERP.
+Blue links | «синие ссылки» (классическая выдача) | Traditional organic results without special features. | AI answers push the blue links lower on the page.
+Position zero | нулевая позиция | A highlighted answer shown above the regular organic results. | We aim for position zero on this question.
+Impression | показ | One appearance of a result in search results. | Impressions grew while clicks stayed flat.
+Click-through rate (CTR) | кликабельность (CTR) | The share of impressions that turn into clicks. | We rewrote the titles to improve click-through rate.
+Informational intent | информационный интент | The user wants to learn something. | This guide targets informational intent.
+Navigational intent | навигационный интент | The user wants to reach a specific site or page. | A search for "gmail login" shows navigational intent.
+Transactional intent | транзакционный интент | The user is ready to buy, book or sign up. | Pages with transactional intent need clear calls to action.
+Commercial intent | коммерческий интент | The user is comparing options before buying. | "Best CRM for agencies" shows commercial intent.
+Local intent | локальный интент | The user wants something nearby. | Queries with "near me" carry local intent.
+Brand query | брендовый запрос | A search that includes a company or product name. | Most clicks come from brand queries.
+Non-brand query | небрендовый запрос | A search that does not include the brand name. | Non-brand queries show real SEO growth.
+Organic traffic | органический трафик | Visits from unpaid search results. | Organic traffic grew after the content update.
+Direct traffic | прямой трафик | Visits with no identified referrer, such as typed URLs or bookmarks. | Direct traffic includes some dark social visits.
+Referral traffic | реферальный трафик | Visits that arrive by clicking a link on another website. | Referral traffic jumped after the media mention.
+Paid search | платный поиск | Ads shown in search results where the advertiser pays per click or impression. | Paid search covers the queries we cannot rank for yet.
+Search engine marketing (SEM) | поисковый маркетинг (SEM) | Promotion in search engines through both organic and paid methods. | The agency offers SEO as part of search engine marketing.
+Pay-per-click (PPC) | оплата за клик (PPC) | An ad model where you pay each time someone clicks. | Our pay-per-click budget is split between brand and non-brand.
+Domain authority | авторитет домена | A third-party score that predicts a site's ranking strength; not a Google metric. | Domain authority is only a rough guide, not a ranking factor.
+Relevance | релевантность | How well a page matches the meaning of a query. | Relevance matters more than word count.
+Dwell time | время до возврата в выдачу | How long a person stays on a page before returning to the results. | Short dwell time may mean the page didn't answer the question.
+Bounce rate | показатель отказов | The share of sessions without meaningful engagement. | Bounce rate is high on the blog but that is normal for quick answers.
+Pogo-sticking | возврат в выдачу (pogo-sticking) | Clicking a result and quickly going back to try another one. | Pogo-sticking suggests that the snippet promises more than the page gives.
+Autocomplete | автодополнение запроса | Suggestions that appear while a person is typing a query. | We use autocomplete to find real long-tail phrases.
+Related searches | похожие запросы | Suggested queries shown at the bottom of a results page. | Related searches give us ideas for new subtopics.
+Rich result | расширенный результат | A search result enhanced with extra data such as ratings or prices. | The recipe pages now get a rich result.
+Sitelinks | быстрые ссылки (sitelinks) | Extra links shown under a main result for a site. | Branded searches show sitelinks to the main sections.
+Local pack | локальный блок (local pack) | A map with a short list of local businesses in the results. | We want to enter the local pack for "locksmith near me".
+Image pack | блок картинок | A row of image results inside the main search page. | The product page appears in the image pack.
+Video carousel | видеокарусель | A scrollable row of video results in the SERP. | A video carousel now sits above our article.
+Top stories | блок «Главные новости» | A news block shown for timely queries. | Top stories take most of the space for this query.
+Search operator | поисковый оператор | A special command that narrows search results, such as site: or intitle:. | Use a search operator to check which pages are indexed.
+Personalization | персонализация выдачи | Adjusting results to a person's location, language or history. | Personalization means two people may see different results.

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import json
 from build import HEAD_FONTS, ROOT
 
 lessons = [
@@ -36,6 +37,9 @@ lessons = [
   ("Письменный английский: follow-up, статусы и задержки", "/lessons/16/",
    "Как закрепить договорённости письменно: recap, ETA, задержки и «это вне объёма»."),
 ]
+
+STATS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "stats.json"), encoding="utf-8"))
+N_TERMS, N_PHRASES = STATS["terms"], STATS["phrases"]
 
 done = sum(1 for _, h, _ in lessons if h)
 
@@ -177,8 +181,8 @@ def lesson_card(i, title, href, dek):
 cards_html = "\n      ".join(lesson_card(i, t, h, d) for i, (t, h, d) in enumerate(lessons))
 
 extras = [
-  ("/glossary/", "Глоссарий", "137 SEO-терминов на английском: транскрипция, перевод, определение, пример. Поиск и фильтр по буквам."),
-  ("/phrasebook/", "Разговорник", "Шпаргалка фраз-спасателей из всех уроков: 476 фраз, поиск и быстрый переход к уроку."),
+  ("/glossary/", "Глоссарий", f"{N_TERMS} SEO-терминов на английском: транскрипция, перевод, определение, пример. Поиск, темы и фильтр по буквам."),
+  ("/phrasebook/", "Разговорник", f"Шпаргалка фраз-спасателей из всех уроков: {N_PHRASES} фраз, поиск и быстрый переход к уроку."),
   ("/games/", "Игровая", "Пять игр на перетаскивание: вставь термин в предложение, соедини слово с переводом, собери фразу из блоков, разложи фразы по ситуациям."),
   ("/game/", "Спринт-тренажёр", "Командная игра на скорость по урокам 1–15: карточки, таймер и счёт для группы от 5 до 10 человек."),
   ("/gazette/", "Газета курса", "Прежняя обложка в стиле газеты — «The SEO English Gazette»."),
@@ -225,8 +229,8 @@ home_html = f'''<!DOCTYPE html>
     </div>
     <dl class="hm-stats">
       <div><dt>{len(lessons)}</dt><dd>уроков</dd></div>
-      <div><dt>137</dt><dd>терминов в глоссарии</dd></div>
-      <div><dt>476</dt><dd>фраз в разговорнике</dd></div>
+      <div><dt>{N_TERMS}</dt><dd>терминов в глоссарии</dd></div>
+      <div><dt>{N_PHRASES}</dt><dd>фраз в разговорнике</dd></div>
       <div><dt>1</dt><dd>командный тренажёр</dd></div>
     </dl>
   </div>

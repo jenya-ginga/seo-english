@@ -1,0 +1,73 @@
+## Работа с клиентом и агентство
+Scope of work | объём работ | A description of the tasks and deliverables a project includes. | Let me confirm the scope of work before we start.
+Statement of work (SOW) | техническое задание на работы (SOW) | A formal document that defines the work, timeline and price. | The statement of work is ready for your review.
+Deliverable | результат работ | A specific item delivered to the client, such as an audit or a report. | The first deliverable is the technical audit.
+Milestone | веха | An important checkpoint in a project plan. | The next milestone is the migration launch.
+Kickoff call | стартовый созвон | The first meeting that starts a project. | We'll cover access and goals on the kickoff call.
+Onboarding | онбординг | The process of getting a new client or colleague set up and ready to work. | Onboarding takes about two weeks.
+Discovery call | ознакомительный созвон | An early conversation to understand the client's business and goals. | The discovery call showed that leads matter more than traffic.
+Access request | запрос доступов | A request for the logins and permissions needed for the work. | Please check the access request I sent yesterday.
+Retainer | ежемесячный договор (ретейнер) | A recurring agreement for a set amount of work each month. | The retainer includes ten hours of consulting.
+Project-based work | проектная работа | Work priced and planned as a one-off project. | A migration is project-based work, not part of the retainer.
+Hourly rate | почасовая ставка | The price charged for one hour of work. | The hourly rate covers consulting and analysis.
+Proposal | коммерческое предложение | A document that offers a service with scope and price. | We'll send the proposal after the call.
+Pitch | питч | A presentation made to win a client or project. | The pitch deck focuses on organic growth.
+Presale audit | пресейл-аудит | A short audit made before the contract to show opportunities. | The presale audit highlights three quick wins.
+Roadmap | дорожная карта | A plan that shows what will be done and when. | The roadmap covers the next six months.
+Quick win | быстрая победа | A small change that brings results fast. | Fixing the titles is a quick win.
+Low-hanging fruit | лёгкая добыча | An easy opportunity that needs little effort. | We start with the low-hanging fruit.
+Long-term play | долгосрочная ставка | An action that pays off over a long period. | Content is a long-term play.
+Impact versus effort | влияние против трудозатрат | A way of prioritizing tasks by expected result and work needed. | We sort tasks by impact versus effort.
+Prioritization | приоритизация | Deciding which tasks to do first. | Prioritization helps us use the hours wisely.
+Backlog | бэклог | A list of tasks waiting to be done. | The idea is in the backlog for next month.
+Sprint | спринт | A short period of focused work, often two weeks. | This sprint is all about technical fixes.
+Stakeholder | заинтересованная сторона | A person with an interest in or influence on a project. | Each stakeholder needs a different report.
+Decision maker | лицо, принимающее решения | The person with the authority to approve a decision. | Who is the decision maker for the budget?
+Buy-in | согласие и поддержка | Agreement and support from the people involved. | We need buy-in from the dev team.
+Approval | утверждение | Formal consent to proceed. | We're waiting for approval on the new structure.
+Turnaround time | срок выполнения | The time it takes to complete a task after receiving it. | Our turnaround time for audits is five working days.
+Deadline | дедлайн | The date by which something must be finished. | The deadline for the report is Friday.
+Delay | задержка | A situation where work takes longer than planned. | The delay is caused by the late access.
+Dependency | зависимость | A task or condition that must be done before another can start. | The launch has a dependency on the developers.
+Assumption | допущение | Something treated as true while planning, without proof yet. | The estimate is based on one assumption: access by Monday.
+Risk | риск | Something that may negatively affect a project. | The main risk is a long approval time.
+Escalation | эскалация | Raising an issue to a higher level of authority. | We need an escalation to the dev lead.
+Bandwidth | ресурс (загрузка) | The time and capacity someone has to take on work. | We don't have the bandwidth for this request this month.
+Change request | запрос на изменение | A request to alter the agreed scope of work. | A new language version is a change request.
+Handover | передача дел | Passing a project or task to another person. | We prepared the handover document for the new manager.
+Executive summary | краткое резюме для руководства | A short overview of the key findings and decisions. | Start the report with an executive summary.
+Key takeaways | главные выводы | The most important points from a report or meeting. | The key takeaways are on the first slide.
+Next steps | следующие шаги | The actions planned after the current stage. | Next steps are listed at the end of the report.
+Recommendation | рекомендация | A suggested action based on the analysis. | Each finding has a clear recommendation.
+Monthly report | ежемесячный отчёт | A report on the results and work done over a month. | The monthly report is sent on the fifth.
+Reporting cadence | периодичность отчётов | How often reports are delivered. | We agreed on a monthly reporting cadence.
+Quarterly business review (QBR) | ежеквартальный бизнес-обзор | A meeting where results and plans are reviewed each quarter. | The quarterly business review covers results and next goals.
+Status update | обновление статуса | A short message about the progress of tasks. | I'll send a status update every Friday.
+Competitor analysis | анализ конкурентов | A study of competitors' strategies and results. | The competitor analysis shows who wins the comparison queries.
+Gap analysis | анализ пробелов | Comparing the current state with the desired one to find missing parts. | The gap analysis lists missing pages and links.
+Benchmarking | сравнение с эталоном | Comparing results against competitors or standards. | Benchmarking shows we are behind on content depth.
+Hypothesis | гипотеза | An idea about what will work, to be tested. | Our hypothesis is that shorter titles will raise CTR.
+A/B test | A/B-тест | An experiment that compares two versions to see which works better. | We ran an A/B test on the title format.
+Split test | сплит-тест | Another name for an A/B test. | The split test ran for four weeks.
+Proof of concept | доказательство концепции | A small trial that shows an idea can work. | The pilot is a proof of concept for the new template.
+Testimonial | отзыв клиента | A statement from a client about your work. | The client gave us a testimonial.
+Client retention | удержание клиентов | Keeping clients over time. | Clear reporting improves client retention.
+Churn | отток | The loss of customers or clients over a period. | Churn is low because of the regular reviews.
+White-label | white-label | Services sold under another company's brand. | We offer white-label SEO for other agencies.
+In-house team | внутренняя команда | Employees who work inside the client's company. | The in-house team will handle the publishing.
+Freelancer | фрилансер | A person who works independently on a project basis. | The freelancer writes two articles a week.
+Account manager | аккаунт-менеджер | The person who manages the relationship with a client. | The account manager joins every call.
+Project manager | проджект-менеджер | The person who plans and tracks the project work. | The project manager updated the timeline.
+SEO specialist | SEO-специалист | A person who works on improving a site's search visibility. | The SEO specialist will share the audit.
+Content manager | контент-менеджер | A person who plans, edits and publishes content. | The content manager approves every draft.
+Developer | разработчик | A person who writes and maintains the code of a site. | A developer needs to fix the redirects.
+Pain point | болевая точка | A specific problem a client or customer wants to solve. | The client's main pain point is low lead quality.
+Value proposition | ценностное предложение | A statement of why a customer should choose your offer. | The page should state the value proposition at the top.
+Competitive advantage | конкурентное преимущество | A strength that makes a business better than rivals. | Fast delivery is the competitive advantage.
+Market share | доля рынка | The portion of a market that a company controls. | Organic search can win market share from competitors.
+Lead generation | генерация лидов | Attracting people who may become customers. | Lead generation is the main goal of the site.
+Qualified lead | квалифицированный лид | A potential customer who matches the target profile and shows interest. | We care about qualified leads, not just form fills.
+Sales funnel | воронка продаж | The stages a prospect passes before becoming a customer. | Content supports every stage of the sales funnel.
+Brand awareness | узнаваемость бренда | How well people know and recognize a brand. | Brand awareness grows with consistent visibility.
+Touchpoint | точка контакта | Any interaction between a customer and a brand. | The blog is the first touchpoint for many buyers.
+Positioning | позиционирование | How a brand wants to be seen in the market compared to others. | Positioning must stay consistent across channels.

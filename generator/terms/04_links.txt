@@ -1,0 +1,54 @@
+## Ссылки и авторитет
+Link building | линкбилдинг | Earning or placing links to a site from other websites. | Link building is the next step after the content update.
+Backlink | обратная ссылка (бэклинк) | A link from another website that points to your site. | One strong backlink can outweigh many weak ones.
+Inbound link | входящая ссылка | A link that leads to your site from an external page. | The report shows every inbound link by domain.
+Outbound link | исходящая ссылка | A link from your page to another website. | Add outbound links to trusted sources.
+External link | внешняя ссылка | A link that goes to a different domain. | An external link to the study adds credibility.
+Referring domain | ссылающийся домен | A unique website that links to your site. | We gained twelve new referring domains this quarter.
+Link profile | ссылочный профиль | The full set of links pointing to a site. | The link profile looks natural and diverse.
+Backlink audit | аудит ссылочного профиля | A review of a site's backlinks for quality and risk. | A backlink audit found many spammy domains.
+Link quality | качество ссылок | How relevant, trusted and natural a link is. | Link quality matters more than the number of links.
+Link relevance | тематическая релевантность ссылки | How closely the linking page matches the topic of the target. | Link relevance is why we avoid random directories.
+Dofollow link | dofollow-ссылка | A normal link that is not marked with nofollow. | A dofollow link from a news site is valuable.
+Anchor text distribution | распределение анкоров | The mix of anchor types in a site's backlinks. | The anchor text distribution is too keyword-heavy.
+Exact match anchor | точный анкор | An anchor that is exactly the target keyword. | Too many exact match anchors look unnatural.
+Branded anchor | брендовый анкор | An anchor that uses the brand name. | Most of our links should have a branded anchor.
+Naked URL | анкор-URL | A link whose anchor text is the plain web address. | A naked URL is a normal part of a natural profile.
+Generic anchor | безликий анкор | A non-descriptive anchor such as "click here". | Replace the generic anchor with a descriptive one.
+Guest post | гостевая публикация | An article written for another website to earn exposure and a link. | We pitched a guest post to an industry blog.
+Sponsored post | спонсорская публикация | A paid article that should be marked as an ad. | A sponsored post must carry a sponsored link attribute.
+Digital PR | digital PR | Earning media coverage and links through newsworthy content. | Digital PR works well for data-driven stories.
+Outreach | аутрич | Contacting site owners or journalists to ask for links or coverage. | Outreach replies are slow in August.
+Link prospecting | поиск ссылочных доноров | Finding sites that could link to you. | Link prospecting starts with competitors' backlinks.
+Link prospect | потенциальный донор | A site that could be a good source of a link. | Each link prospect gets a quick quality check.
+Link acquisition | получение ссылок | The process of gaining new backlinks. | Link acquisition slowed down this month.
+Link placement | размещение ссылки | A link added to an existing or new page on another site. | The link placement was approved by the editor.
+Niche edit | вставка ссылки в готовую статью | Adding a link to an existing article on another site. | A niche edit is faster but needs a careful quality check.
+Broken link building | ссылки на месте битых | Offering your page as a replacement for a dead link on another site. | Broken link building works if you have a good replacement page.
+Unlinked mention | упоминание без ссылки | A mention of your brand on a site without a link. | We contact sites with an unlinked mention and ask for a link.
+Linkable asset | ссылочный актив | Content created so that others want to link to it. | The calculator is our best linkable asset.
+Link bait | приманка для ссылок | Content designed to attract links, often through surprise or usefulness. | Link bait should still be genuinely useful.
+Skyscraper technique | техника «небоскрёб» | Creating a better version of popular content and promoting it to its linkers. | The skyscraper technique needs real improvement, not just length.
+Resource page | страница-подборка ресурсов | A page on a site that lists useful links on a topic. | The resource page accepted our guide.
+Web directory | веб-каталог | A listing site that organizes websites by category. | Only a few niche web directories are worth a listing.
+Citation source | источник цитирования | A website where a business listing is published. | Each citation source must show the same business name.
+Reciprocal link | взаимная ссылка | Two sites linking to each other by agreement. | Excessive reciprocal links look manipulative.
+Link exchange | обмен ссылками | An agreement to trade links between sites. | A large-scale link exchange violates spam policies.
+Paid link | платная ссылка | A link bought for money, which should be marked as sponsored. | A paid link without the right attribute is risky.
+Link farm | ссылочная ферма | A group of sites created only to exchange or sell links. | Backlinks from a link farm can harm the site.
+Spammy link | спамная ссылка | A low-quality link from an irrelevant or manipulative site. | A spammy link is usually ignored by search engines.
+Toxic link | токсичная ссылка | A link that is considered harmful, a term used mostly by SEO tools. | The tool flags a toxic link, but it needs a manual check.
+Negative SEO | негативное SEO | Attempts to harm a competitor's rankings by building spammy links or similar tactics. | We saw no sign of negative SEO in the logs.
+Disavow file | файл дезавуирования ссылок | A file that asks Google to ignore selected backlinks. | We only use a disavow file for clear manipulative links.
+Manual action | ручные санкции | A penalty applied by a human reviewer at Google. | The manual action was lifted after the cleanup.
+Reconsideration request | запрос на повторную проверку | A message asking Google to review a site after a manual action. | We sent the reconsideration request with a detailed report.
+Link velocity | скорость роста ссылок | How fast a site gains new backlinks over time. | A sudden jump in link velocity can look unnatural.
+Link decay | потеря ссылок | The gradual loss of backlinks over time. | Link decay is normal, but we monitor the big losses.
+Lost backlinks | потерянные ссылки | Backlinks that used to exist and were removed. | We checked the lost backlinks after the redesign.
+Broken backlinks | битые обратные ссылки | Backlinks that point to a page on your site that returns an error. | Redirect the broken backlinks to the closest page.
+Link reclamation | возврат ссылок | Recovering lost or broken links. | Link reclamation is cheap and effective.
+Domain Rating (DR) | Domain Rating (DR) | Ahrefs' score of the strength of a site's backlink profile. | The domain rating (DR) of the donor is around forty.
+URL Rating (UR) | URL Rating (UR) | Ahrefs' score of the strength of a page's backlink profile. | The page's URL Rating is lower than its competitors'.
+Authority score | Authority Score | Semrush's score of a domain's overall quality and SEO performance. | Semrush shows our authority score has grown.
+Trust Flow | Trust Flow | Majestic's metric of a site's trustworthiness based on link quality. | The donor site has strong Trust Flow.
+Topical relevance | тематическая релевантность | How well a site or page fits a specific subject area. | Topical relevance of the donor matters.

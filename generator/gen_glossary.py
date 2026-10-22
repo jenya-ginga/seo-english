@@ -137,19 +137,65 @@ for t in all_terms:
     m["star"] = m["star"] or t["star"]
 
 glossary = sorted(merged.values(), key=lambda x: x["term"].lower())
+for _t in glossary:
+    _t.setdefault("category", "Из уроков")
+
+# ---- extra terms from generator/terms/*.txt  (term | перевод | definition | example), "## Category" headers
+def _key(term):
+    return re.sub(r"[^a-z0-9а-яё]+", " ", re.sub(r"\([^)]*\)", "", term).lower()).strip()
+
+
+def load_extra_terms():
+    out, cat = [], ""
+    tdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "terms")
+    for fn in sorted(os.listdir(tdir)):
+        if not fn.endswith(".txt"):
+            continue
+        with open(os.path.join(tdir, fn), encoding="utf-8") as f:
+            for ln, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                if line.startswith("##"):
+                    cat = line.lstrip("#").strip()
+                    continue
+                parts = [x.strip() for x in line.split(" | ")]
+                assert len(parts) == 4, (fn, ln, line)
+                term, ru, d_en, ex = parts
+                out.append(dict(term=term, pron="", ru=ru, def_en=d_en, def_ru="", example=ex,
+                                star=False, lessons=[], category=cat))
+    return out
+
+
+_seen = {_key(t["term"]) for t in glossary}
+_extra, _dups = [], []
+for _t in load_extra_terms():
+    k = _key(_t["term"])
+    if k in _seen:
+        _dups.append(_t["term"]); continue
+    _seen.add(k); _extra.append(_t)
+if _dups:
+    print("extra terms skipped as duplicates:", _dups)
+glossary = sorted(glossary + _extra, key=lambda x: x["term"].lower())
+CATEGORIES = ["Из уроков"] + [c for c in dict.fromkeys(t["category"] for t in _extra)]
 
 
 def lesson_links(ls):
     return " ".join(f'<a class="gl-lesson" href="/lessons/{n}/">№{n:02d}</a>' for n in sorted(ls))
 
 
+PRON_MISSING = {}
+
+
 def gl_row(t):
     """One glossary card (grid layout)."""
     star = t["star"]
     ip, missing = ipa.term_ipa(t["term"])
-    assert not missing, (t["term"], missing)
+    cyr, missing2 = ipa.term_cyr(t["term"])
+    for w in set(missing) | set(missing2):
+        PRON_MISSING.setdefault(w, t["term"])
     parts = []
-    if t["ru"]:
+    if t["ru"] and t["ru"].strip().lower() != t["term"].strip().lower():
         parts.append(f'<p class="gl-ru">{esc(t["ru"])}</p>')
     if t["def_en"]:
         parts.append(f'<p class="gl-def">{esc(t["def_en"])}</p>')
@@ -158,11 +204,11 @@ def gl_row(t):
     if t["example"]:
         parts.append(f'<p class="gl-ex">&ldquo;{esc(t["example"])}&rdquo;</p>')
     first = t["term"][:1].upper()
-    return (f'<article class="gl-card{" is-star" if star else ""}" data-letter="{esc(first)}">'
+    return (f'<article class="gl-card{" is-star" if star else ""}" data-letter="{esc(first)}" data-cat="{esc(t["category"])}">'
             f'<h3 class="gl-term">{"★ " if star else ""}{esc(t["term"])}</h3>'
-            f'<div class="gl-ipa" lang="en-US" title="Американское произношение (IPA)">{esc(ip)}</div>'
+            f'<div class="gl-pron" title="IPA (US): {esc(ip)}">{esc(cyr)}</div>'
             f'{"".join(parts)}'
-            f'<div class="gl-meta">{lesson_links(t["lessons"])}</div></article>')
+            f'<div class="gl-meta">{lesson_links(t["lessons"]) if t["lessons"] else ""}<span class="gl-cat">{esc(t["category"])}</span></div></article>')
 
 
 SEARCH_CSS = '''<style>
@@ -180,29 +226,38 @@ SEARCH_CSS = '''<style>
 .gl-card{display:flex;flex-direction:column;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
 .gl-card.is-star{border-color:var(--accent);}
 .gl-term{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.25;margin:0;color:var(--ink);}
-.gl-ipa{font-family:"Noto Sans","Segoe UI","DejaVu Sans","Arial Unicode MS",system-ui,sans-serif;font-size:14px;color:var(--accent-ink);letter-spacing:.01em;}
+.gl-pron{font-family:var(--sans);font-size:14.5px;color:var(--accent-ink);letter-spacing:.01em;cursor:help;}
 .gl-ru{margin:2px 0 0;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);}
 .gl-def{margin:0;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink);}
 .gl-def-ru{margin:0;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink-soft);}
 .gl-ex{margin:2px 0 0;padding-left:12px;border-left:2px solid var(--line);font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.5;color:var(--ink-soft);}
-.gl-meta{margin-top:auto;padding-top:6px;}
+.gl-meta{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;}
+.gl-cat{font-family:var(--sans);font-size:11.5px;color:var(--ink-faint);margin-left:2px;}
+.gl-cats{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;}
+.gl-cats button{font-family:var(--sans);font-size:12.5px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--ink-soft);padding:5px 12px;cursor:pointer;}
+.gl-cats button.on{background:var(--accent);border-color:var(--accent);color:var(--bg);}
 </style>'''
 
+cat_buttons = '<button type="button" class="on" data-c="">Все темы</button>' + "".join(
+    f'<button type="button" data-c="{esc(c)}">{esc(c)}</button>' for c in CATEGORIES)
 letters = sorted({t["term"][:1].upper() for t in glossary if t["term"][:1].isalpha()})
 letter_buttons = '<button type="button" class="on" data-l="">Все</button>' + "".join(
     f'<button type="button" data-l="{l}">{l}</button>' for l in letters)
 
-gl_table = f'<div class="gl-grid" id="gl-grid">{"".join(gl_row(t) for t in glossary)}</div>'
+gl_cards = [gl_row(t) for t in glossary]
+assert not PRON_MISSING, PRON_MISSING
+gl_table = f'<div class="gl-grid" id="gl-grid">{"".join(gl_cards)}</div>'
 
 GL_JS = '''<script>
 (function(){
   var q=document.getElementById('gl-q'), rows=[].slice.call(document.querySelectorAll('#gl-grid .gl-card')),
       cnt=document.getElementById('gl-count'), empty=document.getElementById('gl-empty'),
-      btns=[].slice.call(document.querySelectorAll('.gl-letters button')), letter='';
+      btns=[].slice.call(document.querySelectorAll('.gl-letters button')), letter='',
+      cbtns=[].slice.call(document.querySelectorAll('#gl-cats button')), cat='';
   function apply(){
     var s=q.value.trim().toLowerCase(), shown=0;
     rows.forEach(function(r){
-      var ok=(!letter||r.getAttribute('data-letter')===letter)&&(!s||r.textContent.toLowerCase().indexOf(s)>-1);
+      var ok=(!letter||r.getAttribute('data-letter')===letter)&&(!cat||r.getAttribute('data-cat')===cat)&&(!s||r.textContent.toLowerCase().indexOf(s)>-1);
       r.style.display=ok?'':'none'; if(ok) shown++;
     });
     cnt.textContent='Показано: '+shown+' из '+rows.length;
@@ -212,6 +267,9 @@ GL_JS = '''<script>
   btns.forEach(function(b){b.addEventListener('click',function(){
     letter=b.getAttribute('data-l'); btns.forEach(function(x){x.classList.toggle('on',x===b);}); apply();
   });});
+  cbtns.forEach(function(b){b.addEventListener('click',function(){
+    cat=b.getAttribute('data-c'); cbtns.forEach(function(x){x.classList.toggle('on',x===b);}); apply();
+  });});
   apply();
 })();
 </script>'''
@@ -220,13 +278,14 @@ gl_body = f'''{SEARCH_CSS}
 <section id="terms">
   <div class="wrap wide">
     <h2>Все термины · A–Z</h2>
-    <p class="section-kicker">{len(glossary)} терминов из уроков 11–16, с IPA-транскрипцией и ссылкой на урок</p>
+    <p class="section-kicker">{len(glossary)} терминов: {sum(1 for t in glossary if t["lessons"])} из уроков и {sum(1 for t in glossary if not t["lessons"])} из практики SEO — с транскрипцией, переводом и примером</p>
     <input id="gl-q" class="gl-search" type="search" placeholder="Поиск: термин, перевод, пример…" autocomplete="off">
+    <div class="gl-cats" id="gl-cats">{cat_buttons}</div>
     <div class="gl-letters">{letter_buttons}</div>
     <p id="gl-count" class="gl-count"></p>
     {gl_table}
     <div id="gl-empty" class="note gl-empty">Ничего не найдено. Попробуйте другое слово или сбросьте букву.</div>
-    <p class="note">★ — самые важные для клиентских звонков. Транскрипция — международный фонетический алфавит (IPA), американское произношение; аббревиатуры читаются по буквам. Номер урока ведёт на страницу, где термин разобран.</p>
+    <p class="note">★ — самые важные для клиентских звонков. Транскрипция русскими буквами приблизительная (американский вариант), точная IPA — во всплывающей подсказке при наведении. Аббревиатуры читаются по буквам. Номер урока ведёт на страницу, где термин разобран; у остальных терминов указана тема.</p>
   </div>
 </section>
 {GL_JS}'''
@@ -237,7 +296,7 @@ gl_html = page(
     brand="Global English · Глоссарий",
     eyebrow="Доп. раздел курса «Global English для SEO»",
     h1="Глоссарий",
-    lede="Все SEO-термины на английском из уроков в одном месте — с транскрипцией, переводом, определением и примером фразы. Ищите по слову или выбирайте букву.",
+    lede="Все SEO-термины на английском — из уроков и из повседневной практики — в одном месте — с транскрипцией, переводом, определением и примером фразы. Ищите по слову или выбирайте букву.",
     navlinks=[("#terms", "Термины"), ("/phrasebook/", "Разговорник")],
     body=gl_body,
     prev_href="/", prev_label="← Все уроки",
@@ -352,6 +411,9 @@ def write_root(rel, content):
 
 # music plays everywhere except the lessons
 gl_html = gl_html.replace("</head>", '<script src="/assets/ambient.js" defer></script>\n</head>', 1)
+import json as _json
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "stats.json"), "w", encoding="utf-8") as _f:
+    _json.dump({"terms": len(glossary), "phrases": total_phrases}, _f)
 write_root("glossary/index.html", gl_html)
 pb_html = pb_html.replace("</head>", '<script src="/assets/ambient.js" defer></script>\n</head>', 1)
 write_root("phrasebook/index.html", pb_html)

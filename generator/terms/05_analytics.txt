@@ -1,0 +1,58 @@
+## Аналитика и алгоритмы
+Google Analytics 4 (GA4) | Google Analytics 4 (GA4) | Google's event-based analytics platform for websites and apps. | The goals are set up in Google Analytics 4.
+Session | сессия | A group of interactions by one user within a time window. | A session ends after a period of inactivity.
+Engaged session | вовлечённая сессия | A GA4 session that lasts long enough, has a conversion or shows several page views. | The engaged session rate is a better signal than bounce rate.
+Event | событие | A user interaction recorded by an analytics tool. | We track the form submit as an event.
+Conversion | конверсия | A valuable action a visitor completes, such as a purchase or a lead. | The page brings more traffic, but conversions are flat.
+Conversion rate | коэффициент конверсии | The share of visitors who complete the target action. | The conversion rate doubled after we simplified the form.
+Key event | ключевое событие | The new GA4 name for events that matter most to the business. | Mark the demo request as a key event.
+Goal | цель | An action or result the business wants to measure. | Each goal should tie to revenue or leads.
+Funnel | воронка | The steps a user takes from first visit to conversion. | The funnel shows a big drop at the checkout.
+Attribution | атрибуция | Assigning credit for a conversion to marketing touchpoints. | Attribution shows that organic helps many conversions.
+Last-click attribution | атрибуция по последнему клику | Giving all credit to the last channel before the conversion. | Last-click attribution undervalues content-led SEO.
+Assisted conversion | ассоциированная конверсия | A conversion where a channel helped but wasn't the last one. | SEO produced many assisted conversions.
+Customer journey | путь клиента | The path a person takes from awareness to purchase. | We map the customer journey to find content gaps.
+UTM parameters | UTM-метки | Tags added to URLs to identify the source of traffic. | Add UTM parameters to every newsletter link.
+Segment | сегмент | A subset of users or sessions defined by conditions. | Create a segment for mobile organic visitors.
+Landing page report | отчёт по посадочным | An analytics report showing the pages where sessions start. | The landing page report shows which pages attract organic visits.
+Search Console performance report | отчёт об эффективности в Search Console | A report with clicks, impressions, CTR and position by query and page. | The performance report shows growth in clicks.
+Average position | средняя позиция | The average ranking of a site's results in Search Console. | The average position improved from nine to seven.
+Clicks | клики | The number of times users clicked a result and visited the site. | Clicks grew while impressions stayed stable.
+Query report | отчёт по запросам | A report that lists the queries that triggered impressions. | The query report reveals new long-tail opportunities.
+Anonymized queries | анонимизированные запросы | Rare queries that Search Console hides to protect user privacy. | Anonymized queries explain the gap between total and listed clicks.
+Data sampling | сэмплирование данных | Using part of the data to estimate results in a report. | Data sampling can make small reports less precise.
+Looker Studio | Looker Studio | Google's free tool for building dashboards and reports. | We built the client dashboard in Looker Studio.
+Dashboard | дашборд | A single screen with key metrics and charts. | The dashboard shows organic traffic and conversions.
+Scorecard | скорборд | A compact block of key numbers on a dashboard. | Add a scorecard for monthly leads.
+KPI | KPI | A key performance indicator tied to a business goal. | The main KPI is the number of qualified leads.
+Vanity metric | метрика тщеславия | A number that looks good but doesn't reflect business results. | Impressions alone are a vanity metric.
+Baseline | базовый уровень | The starting measurement used for comparison. | We set the baseline before the migration.
+Benchmark | бенчмарк | A reference value used to judge performance. | The industry benchmark for this metric is hard to find.
+Year-over-year (YoY) | год к году (YoY) | A comparison of a period with the same period last year. | The year-over-year comparison removes seasonality.
+Month-over-month (MoM) | месяц к месяцу (MoM) | A comparison of a month with the previous month. | Month-over-month growth was modest.
+Seasonality | сезонность | Regular changes in demand at certain times of the year. | Seasonality explains the January drop.
+Trend | тренд | The general direction in which a metric moves. | The trend is positive over six months.
+Anomaly | аномалия | An unexpected spike or drop in a metric. | We investigated the anomaly in the traffic.
+Annotation | аннотация | A note on a chart marking an event such as a site update. | Add an annotation for the migration date.
+Return on investment (ROI) | рентабельность инвестиций (ROI) | The profit gained relative to the money invested. | SEO return on investment grows over time.
+Cost per acquisition (CPA) | стоимость привлечения клиента (CPA) | The cost of getting one customer or conversion. | The cost per acquisition from organic is lower than from ads.
+Customer lifetime value (CLV) | пожизненная ценность клиента (CLV) | The total revenue expected from one customer over time. | Customer lifetime value justifies a higher acquisition cost.
+Core update | базовое обновление | A broad update to Google's ranking systems. | The traffic drop matches the core update dates.
+Algorithm update | обновление алгоритма | A change to how a search engine ranks results. | An algorithm update can shift positions quickly.
+Spam update | обновление против спама | An update that targets spam techniques. | We checked whether the spam update touched the site.
+Helpful content system | система полезного контента | A Google ranking signal that favours content made for people. | The helpful content system rewards original expertise.
+Reviews system | система обзоров | A Google system that rewards high-quality, in-depth product reviews. | The reviews system favours first-hand testing.
+Page experience | пользовательский опыт страницы | Signals about how people experience a page, such as speed and safety. | Page experience matters, but strong content matters more.
+Panda | Panda | A former Google update that targeted low-quality content. | Panda is now part of the core systems.
+Penguin | Penguin | A former Google update that targeted manipulative links. | Penguin is part of the core algorithm now.
+Hummingbird | Hummingbird | A Google update that improved understanding of the meaning behind queries. | Hummingbird made conversational queries easier to match.
+RankBrain | RankBrain | A machine-learning component that helps Google interpret queries. | RankBrain helps with queries Google has never seen before.
+Possum | Possum | An informal name for a local ranking update that filters similar nearby results. | The Possum update changed local pack filtering.
+Search Quality Rater Guidelines | инструкция для асессоров качества поиска | Guidelines used by human raters to evaluate search quality. | The Search Quality Rater Guidelines explain what E-E-A-T means.
+Google Discover | Google Discover | A personalized feed of content on mobile that appears without a search. | Discover traffic is volatile, so we don't depend on it.
+Google News | Google News | Google's news aggregation service and search section. | The site was approved for Google News.
+Google Business Profile | профиль компании Google | A free listing that shows a business on Google Search and Maps. | The Google Business Profile needs new photos.
+Chrome User Experience Report (CrUX) | отчёт Chrome о пользовательском опыте (CrUX) | A public dataset of real-user performance data from Chrome. | Field data comes from the Chrome User Experience Report.
+Field data | полевые данные | Performance data collected from real users. | Field data shows poor results on slow phones.
+Lab data | лабораторные данные | Performance data collected in a controlled test environment. | Lab data helps us debug but doesn't reflect real users.
+Lighthouse | Lighthouse | An open-source tool that audits performance, accessibility and SEO. | The Lighthouse score dropped after the new script.

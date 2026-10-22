@@ -28,7 +28,7 @@ LETTERS = {
     "J": "dʒeɪ", "K": "keɪ", "L": "ɛl", "M": "ɛm", "N": "ɛn", "O": "oʊ", "P": "piː", "Q": "kjuː", "R": "ɑːr",
     "S": "ɛs", "T": "tiː", "U": "juː", "V": "viː", "W": "ˈdʌbəl juː", "X": "ɛks", "Y": "waɪ", "Z": "ziː",
 }
-DIGITS = {"0": "oʊ", "1": "wʌn", "2": "tuː", "3": "θriː", "4": "fɔːr", "5": "faɪv"}
+DIGITS = {"0": "oʊ", "1": "wʌn", "2": "tuː", "3": "θriː", "4": "fɔːr", "5": "faɪv", "6": "sɪks", "7": "ˈsɛvən", "8": "eɪt", "9": "naɪn"}
 
 # words that are NOT in the dictionary (or acronyms that are said as words)
 OVERRIDES = {
@@ -54,6 +54,21 @@ OVERRIDES = {
     "multimodal": "ˌmʌltiˈmoʊdəl", "sitemap": "ˈsaɪtmæp", "upsell": "ˈʌpsɛl", "vitals": "ˈvaɪtəlz",
     "lead": "liːd", "increase": "ˈɪnkriːs", "intent": "ɪnˈtɛnt", "internal": "ɪnˈtɜːrnəl", "query": "ˈkwɪri",
     "contentful": "kənˈtɛntfəl", "engineering": "ˌɛndʒəˈnɪrɪŋ",
+    "ahrefs": "ˈeɪrɛfs", "autocomplete": "ˈɔːtoʊkəmˌpliːt", "backlink": "ˈbæklɪŋk", "backlinks": "ˈbæklɪŋks",
+    "benchmarking": "ˈbɛntʃmɑːrkɪŋ", "breadcrumbs": "ˈbrɛdkrʌmz", "canonicalization": "kəˌnɑːnəkələˈzeɪʃən",
+    "cctld": "ˌsiː siː ˌtiː ɛl ˈdiː", "chatbot": "ˈtʃætbɑːt", "devtools": "ˈdɛv tuːlz", "crawlability": "ˌkrɔːləˈbɪləti",
+    "dofollow": "ˈduːˌfɑːloʊ", "googlebot": "ˈɡuːɡəl bɑːt", "gptbot": "ˌdʒiː piː ˈtiː bɑːt", "gtmetrix": "ˌdʒiː tiː ˈmɛtrɪks",
+    "heatmap": "ˈhiːtmæp", "hotjar": "ˈhɑːtdʒɑːr", "indexability": "ˌɪndɛksəˈbɪləti", "indexnow": "ˈɪndɛks naʊ",
+    "linkable": "ˈlɪŋkəbəl", "listicle": "ˈlɪstɪkəl", "llms.txt": "ˌɛl ɛl ˈɛmz dɑːt ˌtiː ɛks ˈtiː", "mangools": "ˈmæŋɡuːlz",
+    "minification": "ˌmɪnəfəˈkeɪʃən", "moz": "mɑːz", "multiregional": "ˌmʌltiˈriːdʒənəl", "nofollow": "ˈnoʊˌfɑːloʊ",
+    "noindex": "ˈnoʊˌɪndɛks", "onboarding": "ˈɑːnˌbɔːrdɪŋ", "preload": "ˈpriːloʊd", "prioritization": "praɪˌɔːrətəˈzeɪʃən",
+    "rankbrain": "ˈræŋkbreɪn", "regex": "ˈrɛdʒɛks", "rel": "rɛl", "schema.org": "ˈskiːmə dɑːt ɔːrɡ", "copywriting": "ˈkɑːpiˌraɪtɪŋ",
+    "semrush": "ˈsɛmrʌʃ", "shopify": "ˈʃɑːpɪfaɪ", "sitebulb": "ˈsaɪtbʌlb", "sitelinks": "ˈsaɪtlɪŋks", "spammy": "ˈspæmi",
+    "subdirectory": "ˈsʌbdəˌrɛktəri", "subdomain": "ˈsʌbdoʊˌmeɪn", "touchpoint": "ˈtʌtʃpɔɪnt", "transactional": "trænˈzækʃənəl",
+    "transcreation": "ˌtrænskriˈeɪʃən", "unlinked": "ʌnˈlɪŋkt", "upselling": "ˈʌpˌsɛlɪŋ", "wayback": "ˈweɪbæk",
+    "webp": "ˈwɛb piː", "whitepaper": "ˈwaɪtˌpeɪpər",
+    "a/b": "eɪ biː", "ga4": "ˌdʒiː eɪ ˈfɔːr", "json": "ˈdʒeɪsən", "prospecting": "ˈprɑːspɛktɪŋ",
+    "yoy": "ˌwaɪ oʊ ˈwaɪ", "mom": "ˌɛm oʊ ˈɛm", "reconsideration": "ˌriːkənˌsɪdəˈreɪʃən",
     "of": "əv", "for": "fər", "in": "ɪn", "to": "tuː", "out": "aʊt", "up": "ʌp", "and": "ænd",
 }
 OVERRIDES["robots.txt"] = "ˈroʊbɑːts dɑːt ˌtiː ɛks ˈtiː"
@@ -114,6 +129,8 @@ def arpa_to_ipa(phones):
 
 
 def word_ipa(w):
+    if w == "Geo":                      # "Geo-targeting" is a word, GEO is spelled out
+        return "ˈdʒiːoʊ"
     lw = w.lower()
     if lw in OVERRIDES:
         return OVERRIDES[lw]
@@ -170,4 +187,75 @@ def term_ipa(term):
     for half in halves:
         chunks = [c for c in re.split(r"\s+/\s+", half) if c.strip()]
         rendered.append(" · ".join(_segment(c, missing) for c in chunks))
+    return " — ".join(rendered), missing
+
+
+# ---------------------------------------------------------------- Russian practical transcription (from IPA)
+_CYR_TOKENS = [
+    ("tʃ", "ч"), ("dʒ", "дж"), ("aɪ", "ай"), ("aʊ", "ау"), ("eɪ", "эй"), ("oʊ", "оу"), ("ɔɪ", "ой"),
+    ("ɜːr", "ёр"), ("ɑːr", "ар"), ("ɔːr", "ор"), ("ɑː", "о"), ("ɔː", "о"), ("iː", "и"), ("uː", "у"),
+    ("æ", "э"), ("ɛ", "э"), ("ʌ", "а"), ("ə", "э"), ("ɪ", "и"), ("i", "и"), ("ʊ", "у"),
+    ("θ", "с"), ("ð", "з"), ("ʃ", "ш"), ("ʒ", "ж"), ("ŋ", "нг"),
+    ("p", "п"), ("b", "б"), ("t", "т"), ("d", "д"), ("k", "к"), ("ɡ", "г"), ("f", "ф"), ("v", "в"),
+    ("s", "с"), ("z", "з"), ("h", "х"), ("m", "м"), ("n", "н"), ("l", "л"), ("r", "р"), ("w", "в"), ("j", "й"),
+]
+
+
+def ipa_word_to_cyr(w):
+    w = w.replace("ˈ", "").replace("ˌ", "")
+    out, i = [], 0
+    while i < len(w):
+        ch = w[i]
+        if ch == " ":
+            out.append(" "); i += 1; continue
+        if ch == "j" and w[i + 1:i + 2] == "ə" and out and out[-1] not in " -":   # kjə → кью (document, cumulative)
+            out.append("ью"); i += 2; continue
+        if ch == "j" and w[i + 1:i + 3] == "uː":          # kjuː → кью, jуː → ю
+            out.append("ю" if (not out or out[-1] in " -") else "ью"); i += 3; continue
+        for tok, cyr in _CYR_TOKENS:
+            if w.startswith(tok, i):
+                out.append(cyr); i += len(tok); break
+        else:
+            out.append(ch); i += 1
+    s = "".join(out)
+    s = s.replace("нгк", "нк")                              # ŋk → нк (think)
+    return s
+
+
+def _phrase_cyr(ch, missing):
+    words = [w for w in ch.split() if w]
+    parts = []
+    for w in words:
+        if w.lower() in OVERRIDES:
+            sub = [w]
+        else:
+            sub = [x for x in re.split(r"(?<=[A-Za-z0-9])-(?=[A-Za-z0-9])", w) if x]
+        cy = []
+        for x in sub:
+            ip = word_ipa(x.strip(".,;:"))
+            if ip is None:
+                missing.append(x); ip = "?"
+            cy.append(ipa_word_to_cyr(ip))
+        parts.append("-".join(cy))
+    return " ".join(parts)
+
+
+def _segment_cyr(seg, missing):
+    seg = seg.strip()
+    paren = [p for p in re.findall(r"\(([^)]*)\)", seg) if not re.search(r"[А-Яа-яЁё]", p)]
+    main = re.sub(r"\([^)]*\)", "", seg).strip()
+    out = "/" + _phrase_cyr(main, missing) + "/"
+    for p in paren:
+        out += " (/" + _phrase_cyr(p, missing) + "/)"
+    return out
+
+
+def term_cyr(term):
+    """Practical Cyrillic transcription, e.g. 'Add-on service' → '/эд-он сёрвис/'."""
+    missing = []
+    halves = re.split(r"\s+[—–]\s+", term.strip())
+    rendered = []
+    for half in halves:
+        chunks = [c for c in re.split(r"\s+/\s+", half) if c.strip()]
+        rendered.append(" · ".join(_segment_cyr(c, missing) for c in chunks))
     return " — ".join(rendered), missing

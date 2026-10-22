@@ -1,0 +1,50 @@
+## Инструменты, CMS и AI-поиск
+Ahrefs | Ahrefs | An SEO toolset for backlink, keyword and competitor research. | We checked the competitors' links in Ahrefs.
+Semrush | Semrush | An SEO and marketing toolset for keywords, audits and tracking. | The Semrush audit lists the technical issues.
+Mangools | Mangools | A set of SEO tools including KWFinder and SERPChecker. | We use Mangools for quick keyword checks.
+Moz | Moz | An SEO software company known for Domain Authority. | Moz reports the domain authority of each donor.
+Majestic | Majestic | A link analysis tool known for Trust Flow and Citation Flow. | Majestic gives a second opinion on the donors.
+Screaming Frog | Screaming Frog | A desktop crawler that audits a site's technical SEO. | Run Screaming Frog on the staging site.
+Sitebulb | Sitebulb | A desktop site audit tool with visual reports. | Sitebulb highlights internal link problems.
+Google Keyword Planner | Планировщик ключевых слов Google | A Google Ads tool that shows keyword ideas and volume ranges. | Google Keyword Planner gives us keyword ideas from Google Ads data.
+Google Trends | Google Trends | A tool that shows how interest in a topic changes over time. | Google Trends confirms the seasonal peak.
+Google Tag Manager | Google Tag Manager | A tool for managing tracking tags on a site without editing the code. | Add the event in Google Tag Manager.
+Google Ads | Google Ads | Google's advertising platform. | The Google Ads data helps with keyword ideas.
+Hotjar | Hotjar | A tool for heatmaps and session recordings of visitors. | Hotjar shows that users miss the button.
+Microsoft Clarity | Microsoft Clarity | A free tool for heatmaps and session recordings. | Microsoft Clarity helps us see how users scroll.
+Heatmap | тепловая карта | A visual that shows where users click or scroll. | The heatmap shows nobody reaches the form.
+Session recording | запись сессий | A replay of a visitor's actions on a site. | A session recording revealed the broken filter.
+Chrome DevTools | Chrome DevTools | Built-in browser tools for inspecting and debugging pages. | Open Chrome DevTools and check the network tab.
+GTmetrix | GTmetrix | A tool for testing page speed and getting a performance report. | GTmetrix shows a waterfall of slow requests.
+Schema.org | Schema.org | A shared vocabulary for structured data markup. | We use Schema.org types for products and articles.
+JSON-LD | JSON-LD | A format for adding structured data to a page as a script. | JSON-LD is the format Google recommends for markup.
+Wayback Machine | Wayback Machine | An archive that stores old versions of web pages. | The Wayback Machine shows the old site structure.
+Yoast SEO | Yoast SEO | A popular WordPress plugin for on-page SEO settings. | Yoast SEO adds the canonical tag automatically.
+Rank Math | Rank Math | A WordPress plugin for SEO settings and schema. | The site uses Rank Math for redirects.
+WordPress | WordPress | A popular open-source content management system. | The blog runs on WordPress.
+Shopify | Shopify | A popular platform for building online stores. | The store on Shopify has duplicate collection URLs.
+Content management system (CMS) | система управления контентом (CMS) | Software for creating and managing website content without code. | Our content management system limits URL changes.
+Headless CMS | headless CMS | A CMS that delivers content through an API to any front end. | A headless CMS gives developers more freedom but needs SEO care.
+Browser extension | расширение для браузера | A small add-on that adds features to a web browser. | Install the browser extension to see the canonical.
+API | API | A way for programs to exchange data with each other. | The dashboard pulls data through an API.
+Spreadsheet | электронная таблица | A document with data arranged in rows and columns. | Please add the URLs to the spreadsheet.
+Regular expression (regex) | регулярное выражение (regex) | A pattern used to match text, often used in filters. | Use a regular expression to filter the URLs.
+Answer engine | ответная система | A search system that gives direct answers instead of a list of links. | An answer engine may mention the brand without sending a click.
+AI search | ИИ-поиск | Search experiences that use generative AI to answer queries. | AI search is changing how people find vendors.
+AI Mode | режим ИИ (AI Mode) | A Google Search experience that answers with generative AI and follow-up questions. | We checked whether the brand appears in AI Mode.
+AI crawler | ИИ-краулер | A bot that collects web content for AI training or AI answers. | Decide which AI crawler may access the site.
+GPTBot | GPTBot | OpenAI's web crawler that can be allowed or blocked in robots.txt. | Blocking GPTBot is a business decision, not an SEO one.
+llms.txt | llms.txt | A proposed text file that points AI systems to a site's key content. | llms.txt is only a proposal and not a ranking tool.
+AI citation share | доля цитирований в ИИ | The share of AI answers in a topic that cite a brand. | We track AI citation share for ten key prompts.
+Prompt tracking | отслеживание промптов | Checking how a brand appears in AI answers for chosen prompts. | Prompt tracking shows which competitors are mentioned.
+Entity SEO | SEO сущностей | Optimizing a site around entities and their relationships. | Entity SEO helps search engines understand the brand.
+Semantic HTML | семантическая вёрстка | Using HTML elements that describe the meaning of the content. | Semantic HTML makes the content easier to parse.
+Knowledge base | база знаний | A structured collection of answers and guides on a topic. | The knowledge base is a good source for AI citations.
+Structured content | структурированный контент | Content organized in clear blocks, such as lists and tables. | Structured content is easier for AI to extract.
+Training data | обучающие данные | The data used to teach a machine learning model. | We can't edit the training data of a model.
+Fine-tuning | дообучение | Adjusting a pre-trained model on a smaller dataset for a task. | Fine-tuning needs examples of the desired output.
+Chatbot | чат-бот | A program that talks with users in a chat. | The chatbot cites our pricing page.
+AI assistant | ИИ-ассистент | A tool that helps with tasks through conversation. | The AI assistant summarized the audit.
+Large language model | большая языковая модель | A model trained on huge text datasets to understand and generate language. | A large language model predicts the next token.
+Machine learning | машинное обучение | Methods in which systems learn patterns from data. | Machine learning helps rank results.
+Natural language processing | обработка естественного языка | Technology that helps computers understand human language. | Natural language processing powers query understanding.

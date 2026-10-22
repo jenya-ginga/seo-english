@@ -1,0 +1,79 @@
+## Технический SEO
+Technical SEO | технический SEO | Optimizing a site's infrastructure so search engines can crawl, render and index it. | Technical SEO comes first, because nothing ranks if it can't be indexed.
+Site audit | аудит сайта | A structured review of a site's SEO problems and opportunities. | We will send the site audit by Friday.
+Crawlability | доступность для сканирования | How easily a crawler can reach and follow a site's pages. | Poor internal links hurt crawlability.
+Indexability | пригодность к индексации | Whether a page is allowed and able to be indexed. | A noindex tag removes indexability on purpose.
+Noindex | noindex | A directive that tells search engines not to show a page in results. | Add noindex to the thank-you pages.
+Nofollow | nofollow | A link attribute that tells search engines not to pass endorsement through the link. | We mark paid links as nofollow.
+Rel sponsored | rel="sponsored" | A link attribute that marks paid or sponsored links. | Use rel sponsored for every advertorial link.
+Rel UGC | rel="ugc" | A link attribute that marks links in user-generated content. | Comments get rel UGC by default.
+Meta robots tag | мета-тег robots | A page-level tag that controls indexing and link following. | The meta robots tag on this page says noindex.
+X-Robots-Tag | заголовок X-Robots-Tag | An HTTP header that gives indexing directives, also for non-HTML files. | We used the X-Robots-Tag header to keep PDFs out of the index.
+XML sitemap | XML-карта сайта | A file that lists the URLs a site wants search engines to find. | Submit the XML sitemap in Search Console.
+Sitemap index | индекс карт сайта | A file that lists several sitemap files. | Large sites split URLs into several files under a sitemap index.
+HTML sitemap | HTML-карта сайта | A page for visitors that links to the main sections of a site. | The HTML sitemap helps users and crawlers.
+Crawl depth | глубина сканирования | The number of clicks needed to reach a page from the homepage. | Key pages should have a crawl depth of three or less.
+Crawl rate | скорость сканирования | How many requests a crawler makes to a site over time. | The server slows down when the crawl rate spikes.
+Crawl trap | ловушка для краулера | A set of URLs that creates endless pages for a crawler. | Calendar filters created a crawl trap.
+Orphan page | страница-сирота | A page with no internal links pointing to it. | The audit found twenty orphan pages.
+Dead-end page | тупиковая страница | A page without outgoing links to other pages. | A dead-end page loses the visitor's journey.
+Redirect chain | цепочка редиректов | A sequence of several redirects before the final URL. | Fix the redirect chain so it goes straight to the final page.
+Redirect loop | петля редиректов | Redirects that send a request back to where it started. | A redirect loop makes the page unreachable.
+302 redirect | редирект 302 | A temporary redirect that says the move is not permanent. | Use a 302 redirect during the short promo.
+307 redirect | редирект 307 | A temporary redirect that keeps the original request method. | The server returns a 307 redirect for HTTPS rules.
+Meta refresh | мета-обновление | A page-level instruction that redirects after a delay. | Avoid meta refresh and use a server-side redirect.
+Soft 404 | мягкая 404 | A page that looks empty or missing but returns a 200 status. | Search Console flags this empty category as a soft 404.
+404 error | ошибка 404 | The status code for a page that was not found. | Broken links lead to a 404 error.
+410 Gone | код 410 | A status code that says the page was removed on purpose. | We return 410 Gone for the discontinued products.
+HTTP status code | HTTP-код ответа | A three-digit code that tells whether a request succeeded. | Check the HTTP status code before blaming the content.
+500 error | ошибка сервера 500 | A status code that means the server failed to process a request. | A 500 error on the checkout stops sales and crawling.
+503 status | код 503 | A status code that means the server is temporarily unavailable. | Return a 503 status during planned maintenance.
+Server log analysis | анализ логов сервера | Reading server logs to see how bots actually crawl a site. | Server log analysis showed Googlebot wasting time on filters.
+Log file | лог-файл | A record of requests made to a server. | We pulled the log file for the last month.
+Canonicalization | каноникализация | Choosing one preferred URL among duplicate or similar pages. | Canonicalization solves the duplicate product URLs.
+Self-referencing canonical | самоссылающийся canonical | A canonical tag that points to the page's own URL. | Every page gets a self-referencing canonical.
+Duplicate content | дублированный контент | Identical or very similar content on more than one URL. | Duplicate content splits signals between pages.
+Near-duplicate content | почти дубли | Pages that are very similar but not identical. | Near-duplicate content is common on filtered category pages.
+URL parameter | URL-параметр | A value added to a URL after a question mark, such as a sort order. | A URL parameter creates thousands of duplicate pages.
+Pagination | пагинация | Splitting a long list into numbered pages. | Pagination should keep each page crawlable through normal links.
+Infinite scroll | бесконечная прокрутка | A design where more content loads as the user scrolls. | Infinite scroll needs crawlable page links as a fallback.
+Faceted navigation | фасетная навигация | Filters that let users narrow a list by attributes like size or colour. | Faceted navigation can explode the number of URLs.
+Breadcrumbs | хлебные крошки | A trail of links showing where a page sits in the site. | Breadcrumbs help users and show the site structure in results.
+Site architecture | архитектура сайта | The way a site's pages are organized and linked. | Good site architecture keeps important pages close to the homepage.
+URL structure | структура URL | The pattern and hierarchy of a site's addresses. | We changed the URL structure to match the categories.
+Slug | слаг (часть URL) | The readable last part of a URL. | Keep the slug short and descriptive.
+Trailing slash | косая черта в конце URL | A slash at the end of a URL path. | Pick one version of the trailing slash and redirect the other.
+HTTPS | HTTPS | The secure version of the web protocol that encrypts data. | The whole site now runs on HTTPS.
+SSL certificate | SSL-сертификат | A file that enables an encrypted connection. | The SSL certificate expired on Monday.
+Mixed content | смешанный контент | Insecure resources loaded on a secure page. | Mixed content triggers browser warnings.
+HSTS | HSTS | A header that makes browsers always use HTTPS for a site. | Enable HSTS after the HTTPS migration is stable.
+Hreflang | hreflang | An annotation that tells search engines which language or region a page targets. | Add hreflang so each country sees its own version.
+Mobile-first indexing | мобильная индексация (mobile-first) | Google mainly uses the mobile version of a page for indexing. | With mobile-first indexing, the mobile page must hold all key content.
+Responsive design | адаптивный дизайн | A layout that adjusts to any screen size. | Responsive design keeps one URL for all devices.
+Core Web Vitals report | отчёт Core Web Vitals | A Search Console report that groups URLs by loading, interactivity and stability. | The Core Web Vitals report shows poor LCP on mobile.
+Page speed | скорость страницы | How fast a page loads and becomes usable. | Page speed improved after we compressed the images.
+Time to First Byte (TTFB) | время до первого байта | The time between a request and the first byte of the response. | A slow Time to First Byte points to a server problem.
+Lazy loading | отложенная загрузка | Loading images or blocks only when they are about to be seen. | Lazy loading speeds up the first screen.
+Render-blocking resources | блокирующие рендеринг ресурсы | Files that stop the browser from showing the page until they load. | Move render-blocking resources out of the head.
+Minification | минификация | Removing unneeded characters from code to make files smaller. | Minification cut the script size by a third.
+Compression | сжатие | Reducing file size for faster transfer, for example with Gzip or Brotli. | Enable compression on the server.
+Browser caching | кеширование в браузере | Storing files on the visitor's device so repeat visits are faster. | Browser caching makes the second visit faster.
+CDN | CDN (сеть доставки контента) | A network of servers that delivers content from a location near the user. | A CDN reduced loading time for overseas visitors.
+Image optimization | оптимизация изображений | Reducing image weight and choosing the right format and size. | Image optimization was the biggest speed win.
+WebP | WebP | A modern image format with smaller files than JPEG or PNG. | We converted the banners to WebP.
+Alt text | альтернативный текст | A text description of an image for accessibility and search engines. | Add alt text that describes what the image shows.
+Preload | предзагрузка | A hint that tells the browser to fetch an important file early. | Preload the hero image to improve LCP.
+Server-side rendering (SSR) | серверный рендеринг | Building the page HTML on the server before sending it. | Server-side rendering makes the content visible to crawlers at once.
+Client-side rendering (CSR) | клиентский рендеринг | Building the page in the browser with JavaScript. | Client-side rendering delays indexing of the content.
+Dynamic rendering | динамический рендеринг | Serving crawlers a pre-rendered version while users get the JavaScript one. | Dynamic rendering is only a workaround, not a long-term plan.
+Hydration | гидратация | Making server-rendered HTML interactive by attaching JavaScript. | Heavy hydration slows down the interaction.
+Robots meta directive | директива robots | An instruction in a tag or header that guides crawlers on a page. | Check every robots meta directive after the redesign.
+Site migration | миграция сайта | Moving a site to a new domain, structure or platform. | We plan the site migration for the weekend.
+Redirect map | карта редиректов | A list matching old URLs to new ones during a migration. | The redirect map covers all old product pages.
+Staging site | тестовая версия сайта | A private copy of a site used for testing changes. | Block the staging site from search engines.
+Search Console | Search Console | Google's free tool for monitoring a site's search performance and indexing. | Please add us to Search Console as an owner.
+URL Inspection tool | инструмент проверки URL | A Search Console tool that shows how Google sees a specific page. | Run the URL Inspection tool and request indexing.
+Request indexing | запрос на индексирование | Asking Google to crawl a specific URL again. | We used request indexing after updating the page.
+Rich Results Test | тест расширенных результатов | A Google tool that checks whether a page's structured data is valid. | Run the Rich Results Test before publishing.
+Bing Webmaster Tools | Bing Webmaster Tools | Microsoft's free tool for monitoring a site in Bing. | Bing Webmaster Tools showed crawl errors we had missed.
+IndexNow | IndexNow | A protocol that lets a site notify search engines about changed URLs right away. | We enabled IndexNow so new pages are noticed faster.
