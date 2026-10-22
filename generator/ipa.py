@@ -72,6 +72,8 @@ OVERRIDES = {
     "of": "əv", "for": "fər", "in": "ɪn", "to": "tuː", "out": "aʊt", "up": "ʌp", "and": "ænd",
 }
 OVERRIDES["robots.txt"] = "ˈroʊbɑːts dɑːt ˌtiː ɛks ˈtiː"
+OVERRIDES["referrer"] = "rɪˈfɜːrər"
+OVERRIDES["10"] = "tɛn"; OVERRIDES["100"] = "wʌn ˈhʌndrəd"; OVERRIDES["30"] = "ˈθɜːrti"; OVERRIDES["20"] = "ˈtwɛnti"
 
 
 def spell(word):

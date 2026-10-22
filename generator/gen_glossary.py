@@ -15,7 +15,7 @@ from build import page
 import ipa
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LESSON_COUNT = 16
+LESSON_COUNT = 17
 
 
 def read_lesson(n):
