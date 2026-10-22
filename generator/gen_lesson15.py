@@ -213,6 +213,6 @@ html = page(
     navlinks=[("#terms","Термины"), ("#llm","LLM"), ("#internal","Внутри"), ("#client","Клиенту"), ("#roleplay","Role Play")],
     body=body,
     prev_href="/lessons/14/", prev_label="← Урок 14: Допродажа",
-    next_href="/", next_label="Все уроки →",
+    next_href="/lessons/16/", next_label="Урок 16: Письменный английский →",
 )
 write("lessons/15/index.html", html)
