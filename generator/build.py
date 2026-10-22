@@ -1,4 +1,7 @@
 import os
+from sitenav import site_head
+
+PAGE_PATH = ""  # текущий путь не известен генератору; aria-current проставит `python3 generator/sitenav.py`
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -21,14 +24,7 @@ def page(title, desc, brand, eyebrow, h1, lede, navlinks, body, prev_href, prev_
 </head>
 <body>
 
-<nav class="topnav">
-  <div class="wrap">
-    <a href="/" class="brand"><span class="dot"></span>{brand}</a>
-    <div class="navlinks">
-      {nav_html}
-    </div>
-  </div>
-</nav>
+{site_head(PAGE_PATH, [l for l in navlinks if l[0].startswith("#")])}
 
 <header class="hero">
   <div class="wrap">

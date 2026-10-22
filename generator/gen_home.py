@@ -2,6 +2,7 @@
 import os
 import json
 from build import HEAD_FONTS, ROOT
+from sitenav import site_head
 
 lessons = [
   ("Просто о временах: как сказать о действии", "/lessons/1/",
@@ -71,17 +72,7 @@ gazette_html = f'''<!DOCTYPE html>
 </head>
 <body>
 
-<nav class="topnav">
-  <div class="wrap">
-    <a href="/" class="brand"><span class="dot"></span>Global English для SEO</a>
-    <div class="navlinks">
-      <a class="navlink" href="#lessons">Уроки</a>
-      <a class="navlink" href="/glossary/">Глоссарий</a>
-      <a class="navlink" href="/phrasebook/">Разговорник</a>
-      <a class="navlink" href="#sections">Доп. разделы</a>
-    </div>
-  </div>
-</nav>
+{site_head("/gazette/")}
 
 <header class="masthead">
   <div class="wrap">
@@ -205,18 +196,7 @@ home_html = f'''<!DOCTYPE html>
 </head>
 <body class="home">
 
-<nav class="topnav">
-  <div class="wrap wide">
-    <a href="/" class="brand"><span class="dot"></span>Global English для SEO</a>
-    <div class="navlinks">
-      <a class="navlink" href="#lessons">Уроки</a>
-      <a class="navlink" href="/glossary/">Глоссарий</a>
-      <a class="navlink" href="/phrasebook/">Разговорник</a>
-      <a class="navlink" href="/games/">Игровая</a>
-      <a class="navlink" href="/game/">Тренажёр</a>
-    </div>
-  </div>
-</nav>
+{site_head("/")}
 
 <main>
   <div class="wrap wide hm-hero">
