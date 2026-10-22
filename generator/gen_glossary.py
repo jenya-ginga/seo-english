@@ -337,7 +337,10 @@ def write_root(rel, content):
     print("wrote", rel, len(content), "bytes")
 
 
+# music plays everywhere except the lessons
+gl_html = gl_html.replace("</head>", '<script src="/assets/ambient.js" defer></script>\n</head>', 1)
 write_root("glossary/index.html", gl_html)
+pb_html = pb_html.replace("</head>", '<script src="/assets/ambient.js" defer></script>\n</head>', 1)
 write_root("phrasebook/index.html", pb_html)
 print("glossary terms:", len(glossary), "| raw rows:", len(all_terms))
 print("phrasebook:", parsed_cards, "cards,", total_phrases, "phrases,", len(pb_by_lesson), "lessons")

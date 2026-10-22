@@ -63,6 +63,7 @@ html = f'''<!DOCTYPE html>
 <title>Global English для SEO — платформа уроков</title>
 <meta name="description" content="Английский для SEO-команды: времена, отчёты клиентам, живые диалоги, GEO-термины, ролевые игры и разбор реальных ситуаций из практики агентства.">
 {HEAD_FONTS}
+<script src="/assets/ambient.js" defer></script>
 </head>
 <body>
 

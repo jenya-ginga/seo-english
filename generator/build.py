@@ -5,7 +5,8 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 HEAD_FONTS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,620;9..144,680&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">'''
+<link rel="stylesheet" href="/assets/style.css">
+<meta name="theme-color" content="#1a211e">'''
 
 def page(title, desc, brand, eyebrow, h1, lede, navlinks, body, prev_href, prev_label, next_href, next_label, extra_head_hero=""):
     nav_html = "\n      ".join(f'<a class="navlink" href="{href}">{label}</a>' for href, label in navlinks)

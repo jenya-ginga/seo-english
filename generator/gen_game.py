@@ -76,7 +76,7 @@ STYLE = '''
 #sprint .timebtn{border:1.5px solid var(--line); background:var(--paper); border-radius:20px; padding:8px 16px; cursor:pointer; font-family:var(--mono); font-size:14px; font-weight:600; color:var(--ink-soft);}
 #sprint .timebtn.on{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink);}
 #sprint .startbtn{
-  width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm);
+  width:100%; background:var(--accent); color:var(--bg); border:none; border-radius:var(--radius-sm);
   padding:16px; font-size:16px; font-weight:650; cursor:pointer; font-family:var(--sans); margin-top:8px;
 }
 #sprint .startbtn:disabled{opacity:.45; cursor:not-allowed;}
@@ -115,7 +115,7 @@ STYLE = '''
   flex:1; min-width:130px; border:none; border-radius:var(--radius-sm); padding:15px 14px;
   font-size:15px; font-weight:650; cursor:pointer; font-family:var(--sans);
 }
-.gp-btn-correct{background:var(--present); color:#fff;}
+.gp-btn-correct{background:var(--present); color:var(--bg);}
 .gp-btn-skip{background:var(--warn-soft); color:var(--warn);}
 .gp-btn-next{background:var(--line-soft); color:var(--ink-soft);}
 .gp-btn-reveal{background:var(--accent-soft); color:var(--accent-ink);}
@@ -128,7 +128,7 @@ STYLE = '''
 #sprintEnd .winner{font-family:var(--serif); font-size:30px; font-weight:650; margin:6px 0 20px;}
 #sprintEnd .finalscore{display:flex; gap:16px; justify-content:center; margin-bottom:22px;}
 #sprintEnd .finalscore div{font-family:var(--mono); font-size:15px;}
-#sprintEnd .again{background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); padding:14px 26px; font-size:15px; font-weight:650; cursor:pointer; font-family:var(--sans);}
+#sprintEnd .again{background:var(--accent); color:var(--bg); border:none; border-radius:var(--radius-sm); padding:14px 26px; font-size:15px; font-weight:650; cursor:pointer; font-family:var(--sans);}
 
 @media (max-width:560px){
   .gp-card{padding:26px 18px;}
@@ -589,5 +589,7 @@ html = page(
     prev_href="/lessons/15/", prev_label="← Урок 15: Сателлиты",
     next_href="/", next_label="На главную →",
 )
+# music plays only on the home page and in the sprint trainer
+html = html.replace("</head>", '<script src="/assets/ambient.js" defer></script>\n</head>', 1)
 write("game/index.html", html)
 print("wrote game/index.html", len(html), "bytes")
