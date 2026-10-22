@@ -71,6 +71,8 @@ html = f'''<!DOCTYPE html>
     <a href="/" class="brand"><span class="dot"></span>Global English для SEO</a>
     <div class="navlinks">
       <a class="navlink" href="#lessons">Уроки</a>
+      <a class="navlink" href="/glossary/">Глоссарий</a>
+      <a class="navlink" href="/phrasebook/">Разговорник</a>
       <a class="navlink" href="#sections">Доп. разделы</a>
     </div>
   </div>
@@ -124,16 +126,16 @@ html = f'''<!DOCTYPE html>
 <section id="sections">
   <div class="wrap">
     <h2>Доп. разделы</h2>
-    <p class="section-kicker">наполним позже</p>
+    <p class="section-kicker">глоссарий, разговорник и тренажёр — готовы</p>
     <div class="sections-grid">
-      <div class="stub-card">
-        <div class="stub-title">Глоссарий</div>
+      <a class="stub-card live" href="/glossary/">
+        <div class="stub-title">Глоссарий <span class="stub-ready">Готово</span></div>
         <div class="stub-desc">Все SEO-термины на английском в одном месте — с транскрипцией.</div>
-      </div>
-      <div class="stub-card">
-        <div class="stub-title">Разговорник по фразам</div>
+      </a>
+      <a class="stub-card live" href="/phrasebook/">
+        <div class="stub-title">Разговорник по фразам <span class="stub-ready">Готово</span></div>
         <div class="stub-desc">Сводная шпаргалка фраз-спасателей из всех уроков.</div>
-      </div>
+      </a>
       <a class="stub-card live" href="/game/">
         <div class="stub-title">Спринт-тренажёр <span class="stub-ready">Готово</span></div>
         <div class="stub-desc">Командная игра на скорость: карточки на перевод и реакцию на реплики клиента по всем 15 урокам, таймер, счёт.</div>
