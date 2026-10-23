@@ -14,7 +14,7 @@ def q(s):
 
 
 def defcell(en, ru):
-    return (f'<span style="display:block; font-family:var(--serif); font-style:italic; font-size:14.5px; line-height:1.5;">{e(en)}</span>'
+    return (f'<span style="display:block; font-family:var(--serif-body); font-style:normal; font-weight:600; font-size:15.5px; line-height:1.55; color:var(--ink);">{e(en)}</span>'
             f'<span class="ru-sub" style="font-size:12.5px; margin-top:6px;">{e(ru)}</span>')
 
 
@@ -77,7 +77,7 @@ for term, pron, en_def, ru_def, ex, priority in TERMS:
     rows_html += (
         f'<tr><td{cls}>{star}{e(term)}</td><td>{e(pron)}</td>'
         f'<td>{defcell(en_def, ru_def)}</td>'
-        f'<td style="font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-soft);">{q(ex)}</td></tr>'
+        f'<td style="font-family:var(--serif-body); font-style:normal; font-size:15px; line-height:1.55; color:var(--ink-soft);">{q(ex)}</td></tr>'
     )
 
 terms_table = (
@@ -273,7 +273,15 @@ sec_check = section(
 )
 
 
-body = "\n".join([sec_terms, sec_phrases, sec_templates, sec_practice, sec_check])
+
+LESSON_CSS = """<style>
+/* lesson 16 only: readable English text (no italic display serif) */
+.en{font-family:var(--serif-body) !important; font-style:normal !important; font-weight:600 !important; font-size:16px !important; line-height:1.6 !important; letter-spacing:0 !important;}
+.ru, .ru-sub{font-size:14.5px; line-height:1.6;}
+td{line-height:1.55;}
+</style>"""
+
+body = LESSON_CSS + "\n" + "\n".join([sec_terms, sec_phrases, sec_templates, sec_practice, sec_check])
 
 html = page(
     title="Урок 16 — Письменный английский для SEO-специалиста",
