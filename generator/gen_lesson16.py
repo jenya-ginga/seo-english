@@ -87,9 +87,9 @@ terms_table = (
 )
 
 sec_terms = section(
-    "terms", "Часть 1 · Written Follow-up Vocabulary",
+    "terms", "Часть 1 · Follow-up Vocabulary",
     "словарь: 12 терминов, приоритетные — под ★ (10 мин)",
-    terms_table + '\n<p class="note">★ = самые важные для писем и сообщений клиенту</p>',
+    terms_table + '\n<p class="note">★ = самые важные для разговора с клиентом</p>',
 )
 
 
@@ -141,19 +141,19 @@ cards = [
 ]
 
 avoid_rows = [
-  ("не писать", "bad", q("As I already said / As per my last email"), "Звучит упрёком. Пишите: Just to confirm…"),
-  ("не писать", "bad", q("Please be informed that…"), "Калька с русского канцелярита. Пишите: Just letting you know… или Quick update:"),
-  ("не писать", "bad", q("I'm waiting for your answer"), "Звучит нетерпеливо. Пишите: Looking forward to hearing from you."),
-  ("не писать", "bad", q("ASAP") + " без даты", "Пишите конкретно: by Thursday, 5 pm."),
-  ("не писать", "bad", q("This will definitely boost your rankings"),
-   "Обещание, которое нельзя дать. Пишите: This should help. We'll measure the effect in Search Console."),
+  ("не говорить", "bad", q("As I already said / As per my last email"), "Звучит упрёком. Говорите: Just to confirm…"),
+  ("не говорить", "bad", q("Please be informed that…"), "Калька с русского канцелярита. Говорите: Just letting you know… или Quick update:"),
+  ("не говорить", "bad", q("I'm waiting for your answer"), "Звучит нетерпеливо. Говорите: Looking forward to hearing from you."),
+  ("не говорить", "bad", q("ASAP") + " без даты", "Говорите конкретно: by Thursday, 5 pm."),
+  ("не говорить", "bad", q("This will definitely boost your rankings"),
+   "Обещание, которое нельзя дать. Говорите: This should help. We'll measure the effect in Search Console."),
 ]
 
 sec_phrases = section(
-    "phrases", "Часть 2 · Key Phrases for Written Updates",
-    "5 моделей фраз для писем и сообщений клиенту (10 мин)",
+    "phrases", "Часть 2 · Key Phrases for Status Updates",
+    "5 моделей фраз для разговора с клиентом (10 мин)",
     phrase_grid(cards)
-    + '\n<h3 style="margin-top:28px;">Чего не писать</h3>\n'
+    + '\n<h3 style="margin-top:28px;">Чего не говорить</h3>\n'
     + compare_card([(t, c, en, e(ru_)) for t, c, en, ru_ in avoid_rows]),
 )
 
@@ -168,7 +168,7 @@ def email_card(title, sub, subject_en, lines_en, subject_ru, lines_ru):
 </div>'''
 
 tpl1 = email_card(
-    "Шаблон 1. Recap после звонка по аудиту", "письмо в тот же день",
+    "Шаблон 1. Recap после звонка по аудиту", "сказать в конце звонка и закрепить в тот же день",
     "Recap of today's call + next steps",
     ["Hi Anna,",
      "Thanks for your time today. Here's a quick recap of what we agreed:",
@@ -203,7 +203,7 @@ tpl2 = email_card(
 
 sec_templates = section(
     "templates", "Часть 3 · Two Ready-to-Use Templates",
-    "два шаблона письма, которые можно адаптировать под свой проект (8 мин)",
+    "два шаблона: проговорите вслух и при желании запишите себе (8 мин)",
     tpl1 + tpl2 + '<div class="note">Даты и сроки в шаблонах условные: подставляйте свои.</div>',
 )
 
@@ -218,7 +218,7 @@ def wp_item(num, title, sub, task_ru, sample_en, sample_ru):
 
 wp_items = [
   wp_item(1, "The Silent Client", "напоминание о доступе",
-    "Клиент две недели не присылает доступ к CMS, контент-календарь стоит. Напишите вежливое напоминание.",
+    "Клиент две недели не присылает доступ к CMS, контент-календарь стоит. Скажите клиенту вежливое напоминание.",
     "Hi Mark, just a gentle reminder about the CMS access we requested two weeks ago. Without it, we can't publish the approved articles, so the content calendar is on hold. Could you send it by Thursday? If it's easier, we can set it up together on a quick call.",
     "Марк, мягкое напоминание о доступе к CMS, который мы запрашивали две недели назад. Без него мы не можем опубликовать согласованные статьи, поэтому контент-календарь на паузе. Не могли бы вы прислать доступ до четверга? Если удобнее, можем настроить вместе на коротком звонке."),
   wp_item(2, "The Blocker on Their Side", "задержка из-за разработчика клиента",
@@ -230,11 +230,11 @@ wp_items = [
     "That's a great idea, but fixing Core Web Vitals involves development work, which is outside the current scope. I can send our recommendations and a quick estimate by tomorrow. Meanwhile, we'll keep the current plan on track.",
     "Отличная идея, но исправление Core Web Vitals требует работы разработчиков и выходит за рамки текущего объёма. Могу прислать наши рекомендации и быструю оценку до завтра. Пока выдерживаем текущий план."),
   wp_item(4, "The Satellite Recap", "связка с уроком 15",
-    "После звонка по сателлитам письменно зафиксируйте, что гарантируется, а что нет.",
-    "Thanks for the call. To confirm in writing: the satellite is sold as is. Its guaranteed function is to technically pass link equity to your main site. Rankings, traffic and appearances in AI answers are not guaranteed and are not included in the price. Please reply to confirm you're comfortable with this.",
-    "Спасибо за звонок. Фиксирую письменно: сателлит продаётся «как есть». Его гарантированная функция — технически передавать ссылочный вес на ваш основной сайт. Позиции, трафик и попадание в AI-ответы не гарантируются и не входят в стоимость. Пожалуйста, ответьте, подтверждая, что вас это устраивает."),
+    "В конце звонка по сателлитам зафиксируйте договорённость: что гарантируется, а что нет.",
+    "Thanks for the call. To confirm what we discussed: the satellite is sold as is. Its guaranteed function is to technically pass link equity to your main site. Rankings, traffic and appearances in AI answers are not guaranteed and are not included in the price. Please reply to confirm you're comfortable with this.",
+    "Спасибо за звонок. Фиксирую договорённость: сателлит продаётся «как есть». Его гарантированная функция — технически передавать ссылочный вес на ваш основной сайт. Позиции, трафик и попадание в AI-ответы не гарантируются и не входят в стоимость. Пожалуйста, ответьте, подтверждая, что вас это устраивает."),
   wp_item(5, "The Dip After Release", "просадка после релиза",
-    "После релиза редиректов в Search Console просели показы, клиент пишет в тревоге. Напишите спокойный апдейт без обещаний.",
+    "После релиза редиректов в Search Console просели показы, клиент пишет в тревоге. Дайте спокойный апдейт без обещаний.",
     "Quick update: after Tuesday's release, we're seeing a short-term dip in impressions in Search Console. This can happen while Google re-processes changed URLs. We're monitoring it daily and will send you a summary on Friday. We'll share only what the data shows.",
     "Короткий апдейт: после вторничного релиза в Search Console видим краткосрочное снижение показов. Такое может быть, пока Google повторно обрабатывает изменённые URL. Мы отслеживаем это ежедневно и пришлём сводку в пятницу. Мы сообщим только то, что показывают данные."),
 ]
@@ -242,19 +242,19 @@ wp_items = [
 practice_intro = '''
 <div class="info-card">
   <div class="info-head"><h3>Как работать<small>в парах</small></h3></div>
-  <p class="idea">Прочитайте задачу, напишите ответ в 3–5 предложениях за 5 минут, затем сверьте с образцом и поменяйтесь ролями.</p>
+  <p class="idea">Прочитайте задачу и ответьте вслух за 1–2 минуты (3–5 предложений), затем сверьте с образцом и поменяйтесь ролями. Удачные формулировки запишите, чтобы не забыть.</p>
 </div>'''
 
 sec_practice = section(
-    "practice", "Часть 4 · Written Practice: 5 ситуаций",
-    "письменные сценарии для пар (15 мин)",
+    "practice", "Часть 4 · Practice: 5 ситуаций",
+    "сценарии для пар, отвечаем вслух (15 мин)",
     practice_intro + accordion(wp_items, single=True, first_open=False),
 )
 
 
 # ---------------------------------------------------------------- PART 5 (checklist / homework)
 checklist = [
-    "Тема письма конкретная (Recap + next steps).",
+    "Тема названа коротко (recap + next steps).",
     "Каждая задача содержит кто, что и когда.",
     "Срок указан датой, не словом ASAP.",
     "Негарантируемое названо прямо, без слова bonus.",
@@ -264,10 +264,10 @@ checklist = [
 check_html = "".join(f"<li>{e(c)}</li>" for c in checklist)
 
 sec_check = section(
-    "checklist", "Часть 5 · Чек-лист письма (домашнее задание)",
-    "напишите recap по своему последнему реальному звонку (5–7 строк) и проверьте по списку",
+    "checklist", "Часть 5 · Чек-лист ответа (домашнее задание)",
+    "расскажите вслух recap по своему последнему реальному звонку, запишите 5–7 предложений и проверьте по списку",
     f'''<div class="info-card">
-  <div class="info-head"><h3>Проверка перед отправкой<small>6 пунктов</small></h3></div>
+  <div class="info-head"><h3>Проверка после ответа<small>6 пунктов</small></h3></div>
   <ol class="idea" style="padding-left:22px; line-height:1.7;">{check_html}</ol>
 </div>''',
 )
@@ -284,12 +284,12 @@ td{line-height:1.55;}
 body = LESSON_CSS + "\n" + "\n".join([sec_terms, sec_phrases, sec_templates, sec_practice, sec_check])
 
 html = page(
-    title="Урок 16 — Письменный английский для SEO-специалиста",
-    desc="Follow-up после звонка, статусы, сообщения о задержках, напоминания и мягкий отказ по объёму: словарь, фразы, шаблоны писем и письменные сценарии для SEO-специалиста.",
+    title="Урок 16 — Follow-up, статусы и задержки",
+    desc="Follow-up после звонка, статусы, сообщения о задержках, напоминания и мягкий отказ по объёму: словарь, фразы, шаблоны и устные сценарии для SEO-специалиста.",
     brand="Global English · Урок 16",
     eyebrow="Урок 16 из курса «Global English для SEO»",
-    h1="Письменный английский: follow-up, статусы и задержки",
-    lede="Как закрепить договорённости письменно после звонка: recap, дедлайны и ETA, предупреждение о задержке, напоминание о доступах и мягкое «это вне объёма» — с опорой на данные Search Console и краула, без обещаний, которых нельзя дать.",
+    h1="Follow-up, статусы и задержки",
+    lede="Как закрепить договорённости после звонка и сказать о сроках: recap, дедлайны и ETA, предупреждение о задержке, напоминание о доступах и мягкое «это вне объёма» — с опорой на данные Search Console и краула, без обещаний, которых нельзя дать. Урок устный: говорим вслух, а удачные предложения можно записать, чтобы не забыть.",
     navlinks=[("#terms", "Термины"), ("#phrases", "Фразы"), ("#templates", "Шаблоны"), ("#practice", "Практика"), ("#checklist", "Чек-лист")],
     body=body,
     prev_href="/lessons/15/", prev_label="← Урок 15: Сателлиты",
