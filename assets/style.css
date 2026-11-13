@@ -22,8 +22,8 @@
   --warn:#c99a8c;
   --warn-soft:#33272a;
   --mono:'JetBrains Mono', ui-monospace, monospace;
-  --serif:'Playfair Display', 'Fraunces', Georgia, serif;
-  --serif-body:'PT Serif', Georgia, 'Times New Roman', serif;
+  --serif:'Inter', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --serif-body:'Inter', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --sans:'Inter', -apple-system, sans-serif;
   --maxw:860px;
   --radius:2px;
@@ -355,3 +355,8 @@ body.home{background-image:none;}
 .shot figcaption{font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); margin-top:6px;}
 details.ans{display:inline-block; margin-top:6px;}
 details.ans summary{cursor:pointer; color:var(--accent); font-family:var(--sans); font-size:12.5px;}
+
+/* ---- читабельный шрифт: без курсива, обычный Inter везде ---- */
+body :not(em):not(i):not(cite){font-style:normal !important;}
+body{font-size:17px; line-height:1.65;}
+.hero p.lede::first-letter{font-family:var(--sans);}
